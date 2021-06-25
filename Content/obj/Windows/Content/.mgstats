@@ -1,1 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/User/source/repos/GameOfTheYear/Content/Font.spritefont","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0,3070901
+"C:/Users/User/source/repos/GameOfTheYear/Content/soldier.png","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/soldier.xnb","TextureProcessor","Texture2DContent",306,341,0,0100342
+"C:/Users/User/source/repos/GameOfTheYear/Content/soldieranimation.png","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/soldieranimation.xnb","TextureProcessor","Texture2DContent",377,1381,0,0016618
+"C:/Users/User/source/repos/GameOfTheYear/Content/soldierBIG.png","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/soldierBIG.xnb","TextureProcessor","Texture2DContent",2891,4181,0,0019688
+"C:/Users/User/source/repos/GameOfTheYear/Content/trench.png","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/trench.xnb","TextureProcessor","Texture2DContent",12275,345685,0,0156327
