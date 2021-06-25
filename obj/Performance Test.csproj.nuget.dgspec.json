@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\GameTrench\\Performance Test.csproj": {}
+    "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\GameTrench\\Performance Test.csproj": {
+    "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GameTrench\\Performance Test.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj",
         "projectName": "Performance Test",
-        "projectPath": "C:\\Users\\User\\source\\repos\\GameTrench\\Performance Test.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\GameTrench\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
