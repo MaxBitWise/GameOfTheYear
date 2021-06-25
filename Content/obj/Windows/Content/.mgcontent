@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/User/source/repos/GameTrench/Content/Font.spritefont</File>
+    <File>C:/Users/User/source/repos/GameTrench/Content/soldier.png</File>
+    <File>C:/Users/User/source/repos/GameTrench/Content/soldieranimation.png</File>
+    <File>C:/Users/User/source/repos/GameTrench/Content/soldierBIG.png</File>
+    <File>C:/Users/User/source/repos/GameTrench/Content/trench.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
