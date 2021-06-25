@@ -19,7 +19,7 @@ namespace Performance_Test
         Texture2D animtexture;
         Texture2D bigtex;
         Texture2D trenchtexleft;
-        int counter = 1;
+        int counter = 0;
         double timer = 0;
         double distance = 0;
         Random rand = new Random();
