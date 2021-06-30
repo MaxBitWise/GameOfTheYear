@@ -27,5 +27,9 @@ namespace GameTrench
         {
             MouseInput.Update(device);
         }
+        public static void DrawRecOfMouse(GraphicsDevice device)
+        {
+            MouseInput.Draw(device);
+        }
     }
 }

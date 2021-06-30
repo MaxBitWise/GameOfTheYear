@@ -24,8 +24,8 @@ namespace GameTrench
         public static int currentFrame = 0;
         public static  Stopwatch stopWatch = new Stopwatch();
         public static SpriteFont font;
-        public static int Width = 1920;
-        public static int Height = 1080;
+        public static int Width = 800;
+        public static int Height = 600;
 
         public static GraphicsDeviceManager _graphics;
         public static SpriteBatch _spriteBatch;

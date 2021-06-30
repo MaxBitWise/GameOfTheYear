@@ -62,20 +62,21 @@ namespace GameTrench
         {
             GraphicsDevice.Clear(Color.Bisque);
             Globals._spriteBatch.Draw(Globals.trenchtexleft, new Vector2(50,0), Color.White);
-            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle(1790,0,80,1080), null, Color.White, (float)Math.PI,
+            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle(1790,0,80, 1080), null, Color.White, (float)Math.PI,
                 new Vector2(Globals.trenchtexleft.Width, Globals.trenchtexleft.Height ), SpriteEffects.None,0F);
         }
         protected override void Draw(GameTime gameTime)
         {
            
-/*            Globals._spriteBatch.Begin();
+            Globals._spriteBatch.Begin();
             drawBackground();
+            Engine.DrawRecOfMouse(GraphicsDevice);
             double fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
             Globals._spriteBatch.DrawString(Globals.font, fps.ToString(), new Vector2(300, 20), Color.White);
             Globals._spriteBatch.DrawString(Globals.font, (Globals.humanunits.Count*2).ToString(), new Vector2(300, 10), Color.White);
             Globals._spriteBatch.End();
             
-            base.Draw(gameTime);*/
+            base.Draw(gameTime);
 
         }
     }

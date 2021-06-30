@@ -19,7 +19,7 @@ namespace GameTrench
         public static void Update(GraphicsDevice device)
         {
             MouseState currentMouseState = Mouse.GetState();
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && 
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 &&
                 Globals.lastMouseState.LeftButton == ButtonState.Released)
             {
                 startPosition.X = currentMouseState.X;
@@ -28,7 +28,7 @@ namespace GameTrench
                 endPosition.Y = currentMouseState.Y;
                 isSelect = true;
             }
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed  &&
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && 
                 Globals.lastMouseState.LeftButton == ButtonState.Pressed && isSelect)
             {
                 endPosition.X = currentMouseState.X;
@@ -39,27 +39,30 @@ namespace GameTrench
             {
                 isSelect = false;
             }
-            Draw(device);
+
             Globals.lastMouseState = currentMouseState;
         }
         public static void Draw(GraphicsDevice device)
         {
-            device.Clear(Color.CornflowerBlue);
+            device.Clear(Color.Bisque);
             if (isSelect == true)
             {
-               rectangleBlock = new Texture2D(device, 1, 1);
-                 Color xnaColorBorder = new Color(128, 128, 128); // default color gray
+                rectangleBlock = new Texture2D(device, 1, 1);
+                Color xnaColorBorder = new Color(0, 128, 255, 20); // default color gray
                 rectangleBlock.SetData(new[] { xnaColorBorder });
 
-                Globals._spriteBatch.Begin();
-                Point position = new Point((int)(startPosition.X), (int)(startPosition.Y)); // position
-                Point size = new Point((int)endPosition.X-(int)startPosition.X, (int)endPosition.Y - (int)startPosition.Y); // size
+                //Globals._spriteBatch.Begin();
+                Point position = new Point((int)50, (int)(startPosition.Y)); // position
+                if (startPosition.Y > endPosition.Y)
+                {
+                    position = new Point((int)50, (int)(endPosition.Y));
+                }
+                Point size = new Point(80, Math.Abs((int)endPosition.Y - (int)startPosition.Y)); // size
 
-                Globals._spriteBatch.DrawString(Globals.font, new String(endPosition.X.ToString() +" "+ endPosition.Y.ToString()), new Vector2(300, 10), Color.White);
+                Globals._spriteBatch.DrawString(Globals.font, new String(endPosition.X.ToString() +" "+ endPosition.Y.ToString()), new Vector2(300, 70), Color.Blue);
                 Rectangle rectangle = new Rectangle(position, size);
-                Color color = new Color(255, 255, 0); // color yellow
-                Globals._spriteBatch.Draw(rectangleBlock, rectangle, color);
-                Globals._spriteBatch.End();
+                Globals._spriteBatch.Draw(rectangleBlock, rectangle, Color.White);
+                //Globals._spriteBatch.End();
             }
             
             
