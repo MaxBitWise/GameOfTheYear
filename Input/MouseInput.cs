@@ -52,19 +52,18 @@ namespace GameTrench
                 rectangleBlock.SetData(new[] { xnaColorBorder });
 
                 //Globals._spriteBatch.Begin();
-                Point position = new Point((int)(50 *Resolution.DetermineDrawScaling().X), (int)(startPosition.Y * Resolution.DetermineDrawScaling().Y)); // position
+                Point position = new Point((int)(50 *Resolution.DetermineDrawScaling().X), (int)(startPosition.Y)); // position
                 if (startPosition.Y > endPosition.Y)
                 {
-                    position = new Point((int)((int)50 * Resolution.DetermineDrawScaling().X), (int)(endPosition.Y * Resolution.DetermineDrawScaling().Y));
+                    position = new Point((int)((int)50 * Resolution.DetermineDrawScaling().X), (int)(endPosition.Y));
                 }
-                Point size = new Point((int)(80 * Resolution.DetermineDrawScaling().X), (int)Math.Abs((int)endPosition.Y * Resolution.DetermineDrawScaling().Y - (int)startPosition.Y * Resolution.DetermineDrawScaling().Y)); // size
+                Point size = new Point((int)(80 * Resolution.DetermineDrawScaling().X), (int)Math.Abs((int)endPosition.Y - (int)startPosition.Y)); // size
 
                 Globals._spriteBatch.DrawString(Globals.font, new String(endPosition.X.ToString() +" "+ endPosition.Y.ToString()), new Vector2(300, 70), Color.Blue);
                 Rectangle rectangle = new Rectangle(position, size);
                 Globals._spriteBatch.Draw(rectangleBlock, rectangle, Color.White);
                 //Globals._spriteBatch.End();
             }
-            
             
         }
     }
