@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 
 namespace GameTrench
-{
+{ 
     static class MouseInput
     {
         static Texture2D rectangleBlock;
@@ -19,7 +19,7 @@ namespace GameTrench
         public static void Update(GraphicsDevice device)
         {
             MouseState currentMouseState = Mouse.GetState();
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 &&
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 * Resolution.DetermineDrawScaling().X &&
                 Globals.lastMouseState.LeftButton == ButtonState.Released)
             {
                 startPosition.X = currentMouseState.X;
@@ -52,12 +52,12 @@ namespace GameTrench
                 rectangleBlock.SetData(new[] { xnaColorBorder });
 
                 //Globals._spriteBatch.Begin();
-                Point position = new Point((int)50, (int)(startPosition.Y)); // position
+                Point position = new Point((int)(50 *Resolution.DetermineDrawScaling().X), (int)(startPosition.Y * Resolution.DetermineDrawScaling().Y)); // position
                 if (startPosition.Y > endPosition.Y)
                 {
-                    position = new Point((int)50, (int)(endPosition.Y));
+                    position = new Point((int)((int)50 * Resolution.DetermineDrawScaling().X), (int)(endPosition.Y * Resolution.DetermineDrawScaling().Y));
                 }
-                Point size = new Point(80, Math.Abs((int)endPosition.Y - (int)startPosition.Y)); // size
+                Point size = new Point((int)(80 * Resolution.DetermineDrawScaling().X), (int)Math.Abs((int)endPosition.Y * Resolution.DetermineDrawScaling().Y - (int)startPosition.Y * Resolution.DetermineDrawScaling().Y)); // size
 
                 Globals._spriteBatch.DrawString(Globals.font, new String(endPosition.X.ToString() +" "+ endPosition.Y.ToString()), new Vector2(300, 70), Color.Blue);
                 Rectangle rectangle = new Rectangle(position, size);

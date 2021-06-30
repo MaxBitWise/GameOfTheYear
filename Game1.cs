@@ -54,15 +54,18 @@ namespace GameTrench
             if (keystate.IsKeyDown(Keys.Escape) == true) this.Exit();
 
             Engine.UpdateEngine(GraphicsDevice);
-
+            Resolution.Update(_graphics);
             base.Update(gameTime);
         }
 
         void drawBackground()
         {
             GraphicsDevice.Clear(Color.Bisque);
-            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Vector2(50,0), Color.White);
-            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle(1790,0,80, 1080), null, Color.White, (float)Math.PI,
+            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle((int)(50 * Resolution.DetermineDrawScaling().X), (int)(0 * Resolution.DetermineDrawScaling().Y),
+                (int)(80 * Resolution.DetermineDrawScaling().X), (int)(1080 * Resolution.DetermineDrawScaling().Y)), null, Color.White, (float)Math.PI,
+                new Vector2(Globals.trenchtexleft.Width, Globals.trenchtexleft.Height), SpriteEffects.FlipHorizontally, 0F);
+            Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle((int)(1790 * Resolution.DetermineDrawScaling().X), (int)(0 * Resolution.DetermineDrawScaling().Y),
+                (int)(80 * Resolution.DetermineDrawScaling().X), (int)(1080 * Resolution.DetermineDrawScaling().Y)), null, Color.White, (float)Math.PI,
                 new Vector2(Globals.trenchtexleft.Width, Globals.trenchtexleft.Height ), SpriteEffects.None,0F);
         }
         protected override void Draw(GameTime gameTime)
