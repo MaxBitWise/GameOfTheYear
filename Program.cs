@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Performance_Test
+namespace GameTrench
 {
     public static class Program
     {

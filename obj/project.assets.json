@@ -7385,9 +7385,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj",
-      "projectName": "Performance Test",
-      "projectPath": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\Performance Test.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\GameTrench.csproj",
+      "projectName": "GameTrench",
+      "projectPath": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\GameTrench.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\source\\repos\\GameOfTheYear\\obj\\",
       "projectStyle": "PackageReference",

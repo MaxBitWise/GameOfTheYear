@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 
-namespace Performance_Test
+namespace GameTrench
 {
     public class Unit
     {
