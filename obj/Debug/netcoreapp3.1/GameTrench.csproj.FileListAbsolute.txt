@@ -82,3 +82,5 @@ C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\obj\Debug\netcoreapp3.1\GameTrench.c
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\obj\Debug\netcoreapp3.1\GameTrench.dll
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\obj\Debug\netcoreapp3.1\GameTrench.pdb
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\obj\Debug\netcoreapp3.1\GameTrench.genruntimeconfig.cache
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\File.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\FontBold.xnb

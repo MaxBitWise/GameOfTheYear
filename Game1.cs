@@ -44,7 +44,7 @@ namespace GameTrench
             Globals.bigtex = Content.Load<Texture2D>("soldierBIG");
             Globals.trenchtexleft = Content.Load<Texture2D>("trench");
             Globals.font = Content.Load<SpriteFont>("font");
-            
+            Globals.fontBold = Content.Load<SpriteFont>("fontBold");
         }
 
 
