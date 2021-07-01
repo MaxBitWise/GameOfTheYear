@@ -8,7 +8,7 @@ namespace GameTrench
     {
         public Vector2 destination = new Vector2(400,300);
         private Vector2 nextPosition;
-        public int speed = 2;
+        public int speed = 20;
         public Soldier(bool side) 
         {
             Random rand = new Random();

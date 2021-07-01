@@ -27,7 +27,7 @@ namespace GameTrench
         {
            IsFixedTimeStep = true;  //Force the game to update at fixed time intervals
            TargetElapsedTime = TimeSpan.FromSeconds(1 / 60.0f);
-
+            
 
             this.IsMouseVisible = true;
             this.Window.AllowUserResizing = true;
@@ -38,13 +38,59 @@ namespace GameTrench
 
         protected override void LoadContent()
         {
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            texture = Content.Load<Texture2D>("soldier");
+            animtexture = Content.Load<Texture2D>("soldieranimation");
+            bigtex = Content.Load<Texture2D>("soldierBIG");
+            trenchtexleft = Content.Load<Texture2D>("trench");
+            font = Content.Load<SpriteFont>("font");
+            // TODO: use this.Content to load your game content here
+        }
+        void spawnsoldier()
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                humanunits.Add(new Soldier(true));
+                aiunits.Add(new Soldier(false));
+            }
+=======
+>>>>>>> Alex
             Globals._spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.texture = Content.Load<Texture2D>("soldier");
             Globals.animtexture = Content.Load<Texture2D>("soldieranimation");
             Globals.bigtex = Content.Load<Texture2D>("soldierBIG");
             Globals.trenchtexleft = Content.Load<Texture2D>("trench");
+<<<<<<< HEAD
             Globals.font = Content.Load<SpriteFont>("font");
             Globals.fontBold = Content.Load<SpriteFont>("fontBold");
+=======
+            Globals.Select25Tex = Content.Load<Texture2D>("Select25Tex");
+            Globals.Select25SelectedTex = Content.Load<Texture2D>("Select25SelectedTex");
+            Globals.Select50Tex = Content.Load<Texture2D>("Select50Tex");
+            Globals.Select50SelectedTex = Content.Load<Texture2D>("Select50SelectedTex");
+            Globals.Select75Tex = Content.Load<Texture2D>("Select75Tex");
+            Globals.Select75SelectedTex = Content.Load<Texture2D>("Select75SelectedTex");
+            Globals.Select100Tex = Content.Load<Texture2D>("Select100Tex");
+            Globals.Select100SelectedTex = Content.Load<Texture2D>("Select100SelectedTex");
+            Globals.font = Content.Load<SpriteFont>("font");
+            Globals.MachinegunIconTex = Content.Load<Texture2D>("MachinegunIcon");
+            Globals.MachinegunIconSelectedTex = Content.Load<Texture2D>("MachinegunIconSelected");
+            Globals.BunkerIconTex = Content.Load<Texture2D>("BunkerIcon");
+            Globals.BunkerIconSelectedTex = Content.Load<Texture2D>("BunkerIconSelected");
+            Globals.InterfaceBackgroundTex = Content.Load<Texture2D>("InterfaceBackgroundTex");
+            Globals.ArtilleryStrikeIconTex = Content.Load<Texture2D>("ArtilleryStrikeIcon");
+            Globals.ArtilleryStrikeIconSelectedTex = Content.Load<Texture2D>("ArtilleryStrikeIconSelected");
+            Globals.MenuIconTex = Content.Load<Texture2D>("MenuTex");
+            Globals.MenuIconSelectedTex = Content.Load<Texture2D>("MenuTexSelected");
+            Globals.TrenchUpIconTex = Content.Load<Texture2D>("TrenchUpIcon");
+            Globals.TrenchUpIconSelectedTex = Content.Load<Texture2D>("TrenchUpIconSelected"); ;
+            InterfaceState.InitButtons(); 
+
+>>>>>>> Stashed changes
+>>>>>>> Alex
         }
 
 

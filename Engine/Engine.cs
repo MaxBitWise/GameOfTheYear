@@ -97,6 +97,7 @@ namespace GameTrench
             {
                 spawnAiunits();
             }
+<<<<<<< HEAD
 
             updateSoldiers();
             if (Globals.wasSelected)
@@ -180,12 +181,30 @@ namespace GameTrench
             }
         }
 
+=======
+            updateSoldiers();
+        }
+
+
+/*        static void selectionSoldiersHum()
+        {
+            for(int i = 0; i < Globals.humanunits.Count; i++)
+            {
+                if 
+            }
+        }
+*/
+>>>>>>> Alex
 
         public static void Draw(GraphicsDevice device)
         {
             DrawRecOfMouse(device);
             DrawSoldiers();
+<<<<<<< HEAD
 
+=======
+            InterfaceState.DrawButtons(device);
+>>>>>>> Alex
         }
 
         public static void DrawRecOfMouse(GraphicsDevice device)
@@ -195,6 +214,7 @@ namespace GameTrench
         public static void DrawSoldiers()
         {
             foreach (Soldier sold in Globals.humanunits)
+<<<<<<< HEAD
                 Globals._spriteBatch.Draw(Globals.texture, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)), 
                     Resolution.ScaledPoint(new Point(8,8))), Color.White);
             foreach (Soldier sold in Globals.aiunits)
@@ -220,5 +240,11 @@ namespace GameTrench
             }
         }
 */
+=======
+                Globals._spriteBatch.Draw(Globals.texture, sold.position, Color.White);
+            foreach (Soldier sold in Globals.aiunits)
+                Globals._spriteBatch.Draw(Globals.texture, sold.position, Color.White);
+        }
+>>>>>>> Alex
     }
 }

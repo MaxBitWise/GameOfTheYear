@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\User\\source\\repos\\GameOfTheYear\\GameTrench.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\Alex\\Desktop\\C#\\GOTY\\GameOfTheYear\\GameTrench.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Alex\\Desktop\\C#\\GOTY\\GameOfTheYear\\GameTrench.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Alex\\Desktop\\C#\\GOTY\\GameOfTheYear\\GameTrench.csproj",
+        "projectName": "GameTrench",
+        "projectPath": "C:\\Users\\Alex\\Desktop\\C#\\GOTY\\GameOfTheYear\\GameTrench.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Desktop\\C#\\GOTY\\GameOfTheYear\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> Alex
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +43,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+<<<<<<< HEAD
+=======
+            "targetAlias": "netcoreapp3.1",
+>>>>>>> Alex
             "projectReferences": {}
           }
         },
@@ -37,6 +58,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+<<<<<<< HEAD
+=======
+          "targetAlias": "netcoreapp3.1",
+>>>>>>> Alex
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
@@ -65,7 +90,11 @@
               "privateAssets": "none"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+>>>>>>> Alex
         }
       }
     }
