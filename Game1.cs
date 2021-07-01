@@ -38,35 +38,23 @@ namespace GameTrench
 
         protected override void LoadContent()
         {
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
+            /*
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             texture = Content.Load<Texture2D>("soldier");
             animtexture = Content.Load<Texture2D>("soldieranimation");
             bigtex = Content.Load<Texture2D>("soldierBIG");
             trenchtexleft = Content.Load<Texture2D>("trench");
-            font = Content.Load<SpriteFont>("font");
-            // TODO: use this.Content to load your game content here
-        }
-        void spawnsoldier()
-        {
-            for (int i = 0; i < 300; i++)
-            {
-                humanunits.Add(new Soldier(true));
-                aiunits.Add(new Soldier(false));
-            }
-=======
->>>>>>> Alex
+            font = Content.Load<SpriteFont>("font");*/
+            
             Globals._spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.texture = Content.Load<Texture2D>("soldier");
             Globals.animtexture = Content.Load<Texture2D>("soldieranimation");
             Globals.bigtex = Content.Load<Texture2D>("soldierBIG");
             Globals.trenchtexleft = Content.Load<Texture2D>("trench");
-<<<<<<< HEAD
+
             Globals.font = Content.Load<SpriteFont>("font");
             Globals.fontBold = Content.Load<SpriteFont>("fontBold");
-=======
+
             Globals.Select25Tex = Content.Load<Texture2D>("Select25Tex");
             Globals.Select25SelectedTex = Content.Load<Texture2D>("Select25SelectedTex");
             Globals.Select50Tex = Content.Load<Texture2D>("Select50Tex");
@@ -88,12 +76,8 @@ namespace GameTrench
             Globals.TrenchUpIconTex = Content.Load<Texture2D>("TrenchUpIcon");
             Globals.TrenchUpIconSelectedTex = Content.Load<Texture2D>("TrenchUpIconSelected"); ;
             InterfaceState.InitButtons(); 
-
->>>>>>> Stashed changes
->>>>>>> Alex
+            // TODO: use this.Content to load your game content here
         }
-
-
         
         protected override void Update(GameTime gameTime)
         {

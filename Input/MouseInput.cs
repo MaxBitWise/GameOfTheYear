@@ -19,7 +19,7 @@ namespace GameTrench
         public static void Update(GraphicsDevice device)
         {
             MouseState currentMouseState = Mouse.GetState();
-<<<<<<< HEAD
+
             if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 * Resolution.DetermineDrawScaling().X &&
                 Globals.lastMouseState.LeftButton == ButtonState.Released && Globals.wasSelected == false)
             {
@@ -56,7 +56,7 @@ namespace GameTrench
 
 
             }
-=======
+
             if (Mouse.GetState().Y < 250 && Mouse.GetState().LeftButton == ButtonState.Pressed && Globals.lastMouseState.LeftButton == ButtonState.Released)
             {
                 InterfaceState.InterfaceClick(Mouse.GetState());
@@ -66,7 +66,7 @@ namespace GameTrench
                 InterfaceState.InterfaceClick(Mouse.GetState());
             }
           
->>>>>>> Alex
+
 
             Globals.lastMouseState = currentMouseState;
         }

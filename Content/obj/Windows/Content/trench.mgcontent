@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD
   <SourceFile>C:/Users/User/source/repos/GameOfTheYear/Content/trench.png</SourceFile>
-  <SourceTime>2021-03-27T13:49:57.6916489+05:00</SourceTime>
-  <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/trench.xnb</DestFile>
-  <DestTime>2021-06-30T21:40:55.7973115+05:00</DestTime>
-=======
-<<<<<<< Updated upstream
-  <SourceFile>C:/Users/User/source/repos/GameOfTheYear/Content/trench.png</SourceFile>
-  <SourceTime>2021-03-27T13:49:57.6916489+05:00</SourceTime>
-  <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/trench.xnb</DestFile>
-  <DestTime>2021-06-25T16:05:27.1362759+05:00</DestTime>
-=======
-  <SourceFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/trench.png</SourceFile>
   <SourceTime>2021-06-28T19:09:14.916591+05:00</SourceTime>
-  <DestFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/bin/Windows/Content/trench.xnb</DestFile>
-  <DestTime>2021-07-01T16:06:29.0716838+05:00</DestTime>
->>>>>>> Stashed changes
->>>>>>> Alex
+  <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/trench.xnb</DestFile>
+  <DestTime>2021-07-02T02:32:46.5301452+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

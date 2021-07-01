@@ -106,3 +106,22 @@ C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Menu
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIcon.xnb
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIconSelected.xnb
 >>>>>>> Alex
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\ArtilleryStrikeIcon.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\ArtilleryStrikeIconSelected.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\BunkerIcon.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\BunkerIconSelected.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\InterfaceBackgroundTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MachinegunIcon.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MachinegunIconSelected.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MenuTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MenuTexSelected.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select100SelectedTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select100Tex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select25SelectedTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select25Tex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select50SelectedTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select50Tex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select75SelectedTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select75Tex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIcon.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIconSelected.xnb

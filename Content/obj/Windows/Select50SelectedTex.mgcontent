@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select50SelectedTex.png</SourceFile>
-  <SourceTime>2021-07-01T17:17:08.5021302+05:00</SourceTime>
-  <DestFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/bin/Windows/Select50SelectedTex.xnb</DestFile>
-  <DestTime>2021-07-01T21:13:54.1812868+05:00</DestTime>
+  <SourceFile>C:/Users/User/source/repos/GameOfTheYear/Content/Select50SelectedTex.png</SourceFile>
+  <SourceTime>2021-07-02T01:54:54.9115176+05:00</SourceTime>
+  <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Select50SelectedTex.xnb</DestFile>
+  <DestTime>2021-07-02T02:32:39.6977712+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
