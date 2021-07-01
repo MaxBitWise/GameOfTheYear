@@ -44,6 +44,11 @@ namespace GameTrench
                 result.X = dX * relation;
                 result.Y = dY * relation;
             }
+            else
+            {
+                result.X = destination.X - position.X;
+                result.Y = destination.Y - position.Y;
+            }
             return result;
         }
         public void UpdateSoldier()

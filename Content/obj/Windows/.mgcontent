@@ -4,13 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/Font.spritefont</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldier.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldieranimation.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldierBIG.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/trench.png</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Font.spritefont</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/FontBold.spritefont</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldier.png</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldieranimation.png</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldierBIG.png</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/trench.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

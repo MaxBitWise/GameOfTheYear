@@ -39,10 +39,20 @@ namespace GameTrench
             {
                 isSelect = false;
                 Globals.wasSelected = true;
-                Globals.recOfLastSelection.X = startPosition.X;
-                Globals.recOfLastSelection.Y = startPosition.Y;
-                Globals.recOfLastSelection.X = endPosition.X;
-                Globals.recOfLastSelection.Y = endPosition.Y;
+                if (startPosition.Y < endPosition.Y)
+                {
+                    Globals.recOfLastSelection.X = 50;
+                    Globals.recOfLastSelection.Y = startPosition.Y;
+                    Globals.recOfLastSelection.Z = 130;
+                    Globals.recOfLastSelection.W = endPosition.Y;
+                }else
+                {
+                    Globals.recOfLastSelection.X = 50;
+                    Globals.recOfLastSelection.Y = endPosition.Y;
+                    Globals.recOfLastSelection.Z = 130;
+                    Globals.recOfLastSelection.W = startPosition.Y;
+                }
+
 
             }
 

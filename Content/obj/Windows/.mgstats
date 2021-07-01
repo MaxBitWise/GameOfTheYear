@@ -1,6 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/Font.spritefont","C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/bin/Windows/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0,2728326
-"C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldier.png","C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/bin/Windows/soldier.xnb","TextureProcessor","Texture2DContent",306,341,0,1732254
-"C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldieranimation.png","C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/bin/Windows/soldieranimation.xnb","TextureProcessor","Texture2DContent",377,1381,0,0058717
-"C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldierBIG.png","C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/bin/Windows/soldierBIG.xnb","TextureProcessor","Texture2DContent",2891,4181,0,0095957
-"C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/trench.png","C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/bin/Windows/trench.xnb","TextureProcessor","Texture2DContent",12275,345685,0,0210206
+"C:/Users/User/source/repos/GameOfTheYear/Content/FontBold.spritefont","C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/FontBold.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0,2899869

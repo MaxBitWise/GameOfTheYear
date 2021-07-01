@@ -5,12 +5,14 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/User/source/repos/GameOfTheYear/Content/Font.spritefont</File>
+    <File>C:/Users/User/source/repos/GameOfTheYear/Content/FontBold.spritefont</File>
     <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldier.png</File>
     <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldieranimation.png</File>
     <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldierBIG.png</File>
     <File>C:/Users/User/source/repos/GameOfTheYear/Content/trench.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
