@@ -4,13 +4,51 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/Font.spritefont</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldier.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldieranimation.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/soldierBIG.png</File>
-    <File>C:/Users/Alex/Desktop/MonogameGames/Performance Test/Content/trench.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Font.spritefont</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/InterfaceBackgroundTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTexSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select25SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select25Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select50SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select50Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select75SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select75Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldier.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldieranimation.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldierBIG.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/trench.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

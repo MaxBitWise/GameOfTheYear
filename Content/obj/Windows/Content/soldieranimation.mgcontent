@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< Updated upstream
   <SourceFile>C:/Users/User/source/repos/GameOfTheYear/Content/soldieranimation.png</SourceFile>
   <SourceTime>2021-02-19T15:27:48.4813696+05:00</SourceTime>
   <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/soldieranimation.xnb</DestFile>
   <DestTime>2021-06-25T16:05:27.1172872+05:00</DestTime>
+=======
+  <SourceFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldieranimation.png</SourceFile>
+  <SourceTime>2021-06-28T19:09:14.916591+05:00</SourceTime>
+  <DestFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/bin/Windows/Content/soldieranimation.xnb</DestFile>
+  <DestTime>2021-07-01T16:06:29.0556803+05:00</DestTime>
+>>>>>>> Stashed changes
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
