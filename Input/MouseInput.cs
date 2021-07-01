@@ -20,7 +20,7 @@ namespace GameTrench
         {
             MouseState currentMouseState = Mouse.GetState();
             if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 * Resolution.DetermineDrawScaling().X &&
-                Globals.lastMouseState.LeftButton == ButtonState.Released)
+                Globals.lastMouseState.LeftButton == ButtonState.Released && Globals.wasSelected == false)
             {
                 startPosition.X = currentMouseState.X;
                 startPosition.Y = currentMouseState.Y;
@@ -29,15 +29,21 @@ namespace GameTrench
                 isSelect = true;
             }
             if (Mouse.GetState().LeftButton == ButtonState.Pressed  && 
-                Globals.lastMouseState.LeftButton == ButtonState.Pressed && isSelect)
+                Globals.lastMouseState.LeftButton == ButtonState.Pressed && isSelect && Globals.wasSelected == false)
             {
                 endPosition.X = currentMouseState.X;
                 endPosition.Y = currentMouseState.Y;
                 
             }
-            if (Mouse.GetState().LeftButton == ButtonState.Released)
+            if (Mouse.GetState().LeftButton == ButtonState.Released && isSelect != false)
             {
                 isSelect = false;
+                Globals.wasSelected = true;
+                Globals.recOfLastSelection.X = startPosition.X;
+                Globals.recOfLastSelection.Y = startPosition.Y;
+                Globals.recOfLastSelection.X = endPosition.X;
+                Globals.recOfLastSelection.Y = endPosition.Y;
+
             }
 
             Globals.lastMouseState = currentMouseState;
@@ -45,7 +51,7 @@ namespace GameTrench
         public static void Draw(GraphicsDevice device)
         {
             device.Clear(Color.Bisque);
-            if (isSelect == true)
+            if (isSelect == true && Globals.wasSelected == false)
             {
                 rectangleBlock = new Texture2D(device, 1, 1);
                 Color xnaColorBorder = new Color(0, 128, 255, 20); // default color gray

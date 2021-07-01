@@ -19,6 +19,7 @@ namespace GameTrench
             Globals._graphics.IsFullScreen = false;
             Globals._graphics.PreferredBackBufferHeight = Globals.Height;
             Globals._graphics.PreferredBackBufferWidth = Globals.Width;
+            Engine.createTrenches();
             Content.RootDirectory = "Content";
         }
 
@@ -73,7 +74,7 @@ namespace GameTrench
            
             Globals._spriteBatch.Begin();
             drawBackground();
-            Engine.DrawRecOfMouse(GraphicsDevice);
+            Engine.Draw(GraphicsDevice);
             double fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
             Globals._spriteBatch.DrawString(Globals.font, fps.ToString(), new Vector2(300, 20), Color.White);
             Globals._spriteBatch.DrawString(Globals.font, (Globals.humanunits.Count*2).ToString(), new Vector2(300, 10), Color.White);

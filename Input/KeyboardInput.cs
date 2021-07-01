@@ -8,7 +8,8 @@ using System.Threading;
 
 namespace GameTrench
 {
-    class KeyboardInput
+    static class KeyboardInput
     {
+
     }
 }
