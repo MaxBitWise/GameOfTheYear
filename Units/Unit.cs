@@ -50,7 +50,7 @@ namespace GameTrench
                     Fire(RealIndex[targetIndexInRange]);
                 }
             }
-            if (!side)
+            if (false)
             {
                 //var PossibleTargets = new List<Unit>();
                 var RealIndex = new List<int>();

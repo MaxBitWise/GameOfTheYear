@@ -125,3 +125,4 @@ C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Select7
 C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIcon.xnb
 C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\TrenchUpIconSelected.xnb
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Bullet.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Bullet.xnb
