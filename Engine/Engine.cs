@@ -104,7 +104,7 @@ namespace GameTrench
 
             updateSoldiers();
 
-            if (Globals.wasSelected)
+            if (MouseInput.CurrMode == MouseMode.Selected)
             {
                 KeyboardInput.checkCreationGroup();
                 if (Globals.creatGroup)

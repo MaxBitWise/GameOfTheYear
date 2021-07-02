@@ -41,37 +41,56 @@ namespace GameTrench
             get { return rawY / Resolution.DetermineDrawScaling().Y; }
         }
     }
+
+    public enum MouseMode
+    {
+        Default = 0,
+        Selection = 1,
+        Selected = 2,
+        Select25 = 3,
+        Select50 = 4,
+        Select75 = 5,
+        Select100 = 6,
+        SetMG = 7,
+        SetBunker = 8,
+        SetArtillery = 9,
+        MGUp = 10,
+        TrenchUp = 11,
+        BunkerUp = 12,
+        ArtilleryStrikeUp = 13,
+        MenuButton = 14
+    }
     static class MouseInput
     {
         static Texture2D rectangleBlock;
         static Vector2 startPosition;
         static Vector2 endPosition;
-        static bool isSelect = false;
+
+        public static MouseMode CurrMode = MouseMode.Default;
 
         public static void Update(GraphicsDevice device)
         {
 
             MouseAdapted currentMouseState = new MouseAdapted(Mouse.GetState());
-            if (currentMouseState.LeftPressed  && currentMouseState.X <= 200 &&
-                !Globals.lastMouseState.LeftPressed && Globals.wasSelected == false)
+            if (currentMouseState.LeftPressed  && currentMouseState.X <= 200 && currentMouseState.Y > 200 &&
+                !Globals.lastMouseState.LeftPressed && CurrMode == MouseMode.Default)
             {
                 startPosition.X = currentMouseState.X;
                 startPosition.Y = currentMouseState.Y;
                 endPosition.X = currentMouseState.X;
                 endPosition.Y = currentMouseState.Y;
-                isSelect = true;
+                CurrMode = MouseMode.Selection;
             }
             if (currentMouseState.LeftPressed &&
-               Globals.lastMouseState.LeftPressed && isSelect && Globals.wasSelected == false)
+               Globals.lastMouseState.LeftPressed && CurrMode == MouseMode.Selection)
             {
                 endPosition.X = currentMouseState.X;
                 endPosition.Y = currentMouseState.Y;
                 
             }
-            if (!currentMouseState.LeftPressed && isSelect != false)
+            if (!currentMouseState.LeftPressed && CurrMode == MouseMode.Selection)
             {
-                isSelect = false;
-                Globals.wasSelected = true;
+                CurrMode = MouseMode.Selected;
                 if (startPosition.Y < endPosition.Y)
                 {
                     Globals.recOfLastSelection.X = 50;
@@ -85,39 +104,26 @@ namespace GameTrench
                     Globals.recOfLastSelection.Z = 130;
                     Globals.recOfLastSelection.W = startPosition.Y;
                 }
-           /*     if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
-                {
-                    InterfaceState.InterfaceClick(currentMouseState);
-                }
-                if (currentMouseState.RightPressed && !Globals.lastMouseState.RightPressed)
-                {
-                    InterfaceState.InterfaceClick(currentMouseState);
-                }*/
+
 
             }
-            if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed && CurrMode == MouseMode.Default)
             {
                 InterfaceState.InterfaceClick(currentMouseState);
             }
             if (currentMouseState.RightPressed && !Globals.lastMouseState.RightPressed)
             {
                 InterfaceState.InterfaceClick(currentMouseState);
+                CurrMode = MouseMode.Default;
             }
-           /* if (Mouse.GetState().Y < 250 && Mouse.GetState().LeftButton == ButtonState.Pressed && Globals.lastMouseState.LeftButton == ButtonState.Released)
-            {
-                InterfaceState.InterfaceClick(Mouse.GetState());
-            }
-            if (Mouse.GetState().RightButton == ButtonState.Pressed && Globals.lastMouseState.RightButton == ButtonState.Released)
-            {
-                InterfaceState.InterfaceClick(Mouse.GetState());
-            }*/
+
 
             Globals.lastMouseState = currentMouseState;
         }
         public static void Draw(GraphicsDevice device)
         {
             device.Clear(Color.Bisque);
-            if (isSelect == true && Globals.wasSelected == false)
+            if (CurrMode == MouseMode.Selection)
             {
                 rectangleBlock = new Texture2D(device, 1, 1);
                 Color xnaColorBorder = new Color(0, 128, 255, 20); // default color gray

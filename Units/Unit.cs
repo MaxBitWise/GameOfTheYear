@@ -11,6 +11,7 @@ namespace GameTrench
         public Vector2 position;
         public bool side;
         public int hp;
+        public int cooldown;
         public Unit()
         {
             

@@ -16,12 +16,12 @@ namespace GameTrench
             if (keystate.IsKeyDown(Keys.Y) == true)
             {
                 Globals.creatGroup = true;
-                Globals.wasSelected = false;
+                MouseInput.CurrMode = MouseMode.Default;
             }
             else if (keystate.IsKeyDown(Keys.N) == true)
             {
                 Globals.creatGroup = false;
-                Globals.wasSelected = false;
+                MouseInput.CurrMode = MouseMode.Default;
             }
         }
     }

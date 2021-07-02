@@ -53,6 +53,7 @@ namespace GameTrench
         public static Texture2D bigtex;
         public static Texture2D trenchtexleft;
 
+        #region Textures
         public static Texture2D InterfaceBackgroundTex;
         public static Texture2D Select25Tex;
         public static Texture2D Select25SelectedTex;
@@ -72,7 +73,31 @@ namespace GameTrench
         public static Texture2D MenuIconSelectedTex;
         public static Texture2D TrenchUpIconTex;
         public static Texture2D TrenchUpIconSelectedTex;
+        #endregion
 
+        #region UnitsStats
+        public static int Soldier = 400;
+        public static int SoldierAccuracy = 50;
+        public static int SoldierDmg = 50;
+        public static int SoldierRange = 200;
+        public static int SoldierFireRate = 1;
+        public static int SoldierCost = 50;
+
+        public static int MGHP = 400;
+        public static int MGAccuracy = 5;
+        public static int MGDmg = 50;
+        public static int MGRange = 300;
+        public static int MGFireRate = 10;
+        public static int MGCost = 50;
+
+        public static int BunkerHP = 2000;
+        public static int BunkerAccuracy = 40;
+        public static int BunkerDmg = 70;
+        public static int BunkerRange = 500;
+        public static int BunkerFireRate = 2;
+        public static int BunkerCost = 200;
+
+        #endregion
 
         public static double timer = 0;
         public static double distance = 0;

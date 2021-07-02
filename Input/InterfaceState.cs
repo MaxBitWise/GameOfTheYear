@@ -16,6 +16,7 @@ namespace GameTrench
         public Texture2D ButtonTex;
         public Texture2D ButtonTexSelected;
         public Texture2D CurrTex;
+        public MouseMode OnClickMode;
     }
 
     public enum ButtonsIndexes
@@ -50,7 +51,8 @@ namespace GameTrench
                 Shape = new Point(1, 1),
                 ButtonTex = Globals.Select25Tex,
                 ButtonTexSelected = Globals.Select25SelectedTex,
-                CurrTex = Globals.Select25Tex
+                CurrTex = Globals.Select25Tex,
+                OnClickMode = MouseMode.Default
 
             },
             new Button
@@ -61,7 +63,8 @@ namespace GameTrench
                 Shape = new Point(100, 40),
                 ButtonTex = Globals.Select25Tex,
                 ButtonTexSelected = Globals.Select25SelectedTex,
-                CurrTex = Globals.Select25Tex
+                CurrTex = Globals.Select25Tex,
+                OnClickMode = MouseMode.Select25
 
             },
             new Button
@@ -72,7 +75,8 @@ namespace GameTrench
                 Shape = new Point(100, 40),
                 ButtonTex = Globals.Select50Tex,
                 ButtonTexSelected = Globals.Select50SelectedTex,
-                CurrTex = Globals.Select50Tex
+                CurrTex = Globals.Select50Tex,
+                OnClickMode = MouseMode.Select50
 
             },
             new Button
@@ -83,7 +87,8 @@ namespace GameTrench
                 Shape = new Point(100, 40),
                 ButtonTex = Globals.Select75Tex,
                 ButtonTexSelected = Globals.Select75SelectedTex,
-                CurrTex = Globals.Select75Tex
+                CurrTex = Globals.Select75Tex,
+                OnClickMode = MouseMode.Select75
 
             },
             new Button
@@ -94,7 +99,8 @@ namespace GameTrench
                 Shape = new Point(100, 40),
                 ButtonTex = Globals.Select100Tex,
                 ButtonTexSelected = Globals.Select100SelectedTex,
-                CurrTex = Globals.Select100Tex
+                CurrTex = Globals.Select100Tex,
+                OnClickMode = MouseMode.Select100
 
             },
             new Button
@@ -105,7 +111,8 @@ namespace GameTrench
                 Shape = new Point(132, 132),
                 ButtonTex = Globals.MachinegunIconTex,
                 ButtonTexSelected = Globals.MachinegunIconSelectedTex,
-                CurrTex = Globals.MachinegunIconTex
+                CurrTex = Globals.MachinegunIconTex,
+                OnClickMode = MouseMode.SetMG
 
             },
             new Button
@@ -116,7 +123,8 @@ namespace GameTrench
                 Shape = new Point(132, 132),
                 ButtonTex = Globals.BunkerIconTex,
                 ButtonTexSelected = Globals.BunkerIconSelectedTex,
-                CurrTex = Globals.BunkerIconTex
+                CurrTex = Globals.BunkerIconTex,
+                OnClickMode = MouseMode.SetBunker
 
             },
             new Button
@@ -127,7 +135,8 @@ namespace GameTrench
                 Shape = new Point(132, 132),
                 ButtonTex = Globals.ArtilleryStrikeIconTex,
                 ButtonTexSelected = Globals.ArtilleryStrikeIconSelectedTex,
-                CurrTex = Globals.ArtilleryStrikeIconTex
+                CurrTex = Globals.ArtilleryStrikeIconTex,
+                OnClickMode = MouseMode.SetArtillery
 
             },
             new Button
@@ -138,7 +147,8 @@ namespace GameTrench
                 Shape = new Point(200, 70),
                 ButtonTex = Globals.MenuIconTex,
                 ButtonTexSelected = Globals.MenuIconSelectedTex,
-                CurrTex = Globals.MenuIconTex
+                CurrTex = Globals.MenuIconTex,
+                OnClickMode = MouseMode.MenuButton
 
             },
             new Button
@@ -149,7 +159,8 @@ namespace GameTrench
                 Shape = new Point(60, 60),
                 ButtonTex = Globals.TrenchUpIconTex,
                 ButtonTexSelected = Globals.TrenchUpIconSelectedTex,
-                CurrTex = Globals.TrenchUpIconTex
+                CurrTex = Globals.TrenchUpIconTex,
+                OnClickMode = MouseMode.TrenchUp
 
             },
             new Button
@@ -160,7 +171,8 @@ namespace GameTrench
                 Shape = new Point(60, 60),
                 ButtonTex = Globals.MachinegunIconTex,
                 ButtonTexSelected = Globals.MachinegunIconSelectedTex,
-                CurrTex = Globals.MachinegunIconTex
+                CurrTex = Globals.MachinegunIconTex,
+                OnClickMode = MouseMode.MGUp
 
             },
             new Button
@@ -171,7 +183,8 @@ namespace GameTrench
                 Shape = new Point(60, 60),
                 ButtonTex = Globals.BunkerIconTex,
                 ButtonTexSelected = Globals.BunkerIconSelectedTex,
-                CurrTex = Globals.BunkerIconTex
+                CurrTex = Globals.BunkerIconTex,
+                OnClickMode = MouseMode.BunkerUp
 
             },
             new Button
@@ -182,7 +195,8 @@ namespace GameTrench
                 Shape = new Point(60, 60),
                 ButtonTex = Globals.ArtilleryStrikeIconTex,
                 ButtonTexSelected = Globals.ArtilleryStrikeIconSelectedTex,
-                CurrTex = Globals.ArtilleryStrikeIconTex
+                CurrTex = Globals.ArtilleryStrikeIconTex,
+                OnClickMode = MouseMode.ArtilleryStrikeUp
 
             },
 
@@ -208,6 +222,7 @@ namespace GameTrench
                     SelectedButton = button.EnumIndex;
                     ButtonsArr[(int)SelectedButton].CurrTex = ButtonsArr[(int)SelectedButton].ButtonTexSelected;
                     missClick = false;
+                    MouseInput.CurrMode = button.OnClickMode;
                     break;
                 }
 
@@ -216,6 +231,7 @@ namespace GameTrench
             {
                 ButtonsArr[(int)SelectedButton].CurrTex = ButtonsArr[(int)SelectedButton].ButtonTex;
                 SelectedButton = ButtonsIndexes.Nothing;
+                MouseInput.CurrMode = MouseMode.Default;
             }
         }
 
