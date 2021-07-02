@@ -11,6 +11,7 @@
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerFieldTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/corpse.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Font.spritefont</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/FontBold.spritefont</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/gothic.spritefont</File>
@@ -36,6 +37,7 @@
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

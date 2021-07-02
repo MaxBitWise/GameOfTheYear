@@ -15,8 +15,15 @@ namespace GameTrench
         public Vector2 destination;
         public bool dead = false;
         public int speed = 40;
-        public Bullet(Vector2 posin, Vector2 destin)
+        Random rand = new Random();
+        public Bullet(Vector2 posin, Vector2 destin, bool isAimed)
         {
+            if (isAimed == false)
+            {
+                //speed = 1;
+                destin.X = (int)(destin.X + rand.Next(20) - 10);
+                destin.Y = (int)(destin.Y + rand.Next(20) - 10);
+            }
             position = posin;
             destination = destin;
         }

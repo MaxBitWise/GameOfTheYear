@@ -137,6 +137,7 @@ namespace GameTrench
                 CurrMode = MouseMode.Default;
                 InterfaceState.Deselect();
             }
+
             if (CurrMode == MouseMode.BunkerUp && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
             {
                 if (Globals.ExpBalance >= Globals.BunkerUpCost)
@@ -174,6 +175,19 @@ namespace GameTrench
                     Globals.StrikesSize += 3;
                     Globals.StrikesCount += 1;
                     Globals.ExpBalance -= Globals.StrikeUpCost;
+                }
+
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (CurrMode == MouseMode.TrenchUp && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            {
+                if (Globals.ExpBalance >= Globals.TrenchUpCost)
+                {
+                    Globals.TrenchUpCost += 2;
+                    Globals.TrenchArmor += 3;
+                    Globals.TrenchInvul += 3;
+                    Globals.ExpBalance -= Globals.TrenchUpCost;
                 }
 
                 CurrMode = MouseMode.Default;

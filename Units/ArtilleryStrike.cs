@@ -20,6 +20,8 @@ namespace GameTrench
         private int counter = 300;
         private int smallcounter = 50;
         private int BlastsCounter = 0;
+        private int StrikesCount = Globals.StrikesCount;
+        private int StrikeSize = Globals.StrikesSize;
         Vector3[] Blasts = new Vector3[Globals.StrikesCount];
 
         public void UpdateArtilleryStrike()
@@ -54,7 +56,7 @@ namespace GameTrench
 
         void Blast()
         {
-            if (BlastsCounter < Globals.StrikesCount)
+            if (BlastsCounter < StrikesCount)
             {
                 Vector3 Spreaded = SpreadBlast();
                 Blasts[BlastsCounter] = Spreaded;
@@ -63,8 +65,8 @@ namespace GameTrench
         }
         Vector3 SpreadBlast()
         {
-            int dX = (int)(Center.X + rand.Next(15 * 10) - 15 * 5);
-            int dY = (int)(Center.Y + rand.Next(15 * 10) - 15 * 5);
+            int dX = (int)(Center.X + rand.Next(20 * 10) - 20 * 5);
+            int dY = (int)(Center.Y + rand.Next(20 * 10) - 20 * 5);
             // int dX = (int)(Center.X + rand.Next(Globals.StrikesSize*10) - Globals.StrikesSize * 5);
             // int dY = (int)(Center.Y + rand.Next(Globals.StrikesSize * 10) - Globals.StrikesSize * 5);
             return new Vector3(dX, dY, 0);
@@ -90,7 +92,7 @@ namespace GameTrench
             for(int i = 0; i < BlastsCounter; i++)
             {
                 if (Blasts[i].Z != -1)
-              Globals._spriteBatch.Draw(Globals.BlastTex, new Rectangle(Resolution.ScaledPoint(new Point((int)Blasts[i].X, (int)Blasts[i].Y)), Resolution.ScaledPoint(new Point(Globals.StrikesSize))), Color.White);
+              Globals._spriteBatch.Draw(Globals.BlastTex, new Rectangle(Resolution.ScaledPoint(new Point((int)Blasts[i].X, (int)Blasts[i].Y)), Resolution.ScaledPoint(new Point(StrikeSize))), Color.White);
             }
         }
 
