@@ -122,7 +122,7 @@ namespace GameTrench
         }
         public static void Draw(GraphicsDevice device)
         {
-            device.Clear(Color.Bisque);
+
             if (CurrMode == MouseMode.Selection)
             {
                 rectangleBlock = new Texture2D(device, 1, 1);

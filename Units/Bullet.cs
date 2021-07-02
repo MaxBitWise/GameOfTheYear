@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
+using System.Diagnostics;
+using System.Threading;
 
 namespace GameTrench
 {
@@ -31,12 +34,13 @@ namespace GameTrench
             {
                 result.X = dX * relation;
                 result.Y = dY * relation;
-                dead = true;
+                
             }
             else
             {
                 result.X = destination.X - position.X;
                 result.Y = destination.Y - position.Y;
+                dead = true;
             }
             return result;
         }
@@ -46,6 +50,12 @@ namespace GameTrench
             position.X += nextPosition.X;
             position.Y += nextPosition.Y;
 
+        }
+
+       public void DrawBullet(GraphicsDevice device)
+        {
+           Globals._spriteBatch.Draw(Globals.BulletTex, new Rectangle(Resolution.ScaledPoint(new Point((int)position.X, (int)position.Y)),
+                    Resolution.ScaledPoint(new Point(4, 4))), Color.White);
         }
     }
 }

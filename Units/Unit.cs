@@ -50,7 +50,7 @@ namespace GameTrench
                     Fire(RealIndex[targetIndexInRange]);
                 }
             }
-            if (!side)
+            if (false)
             {
                 //var PossibleTargets = new List<Unit>();
                 var RealIndex = new List<int>();
@@ -78,9 +78,10 @@ namespace GameTrench
 
         public void Fire(int EnemyIndex)
         {
-            if(side) Globals.aiunits[EnemyIndex].Die();
-            if(!side) Globals.humanunits[EnemyIndex].Die();
+            if (side) { Globals.Bullets.Add(new Bullet(position, Globals.aiunits[EnemyIndex].position)); Globals.aiunits[EnemyIndex].Die();  }
+            if (!side) { Globals.Bullets.Add(new Bullet(position, Globals.humanunits[EnemyIndex].position)); Globals.humanunits[EnemyIndex].Die(); }
             cooldown = 60 / FireRate;
+            
         }
 
         public void Die()

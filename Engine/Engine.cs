@@ -88,10 +88,19 @@ namespace GameTrench
 
         public static void updateBullets()
         {
-            foreach (Bullet bullet in Globals.Bullets)
+            var deadBullets = new List<int>();
+            for(int i = 0; i < Globals.Bullets.Count; i++)
             {
-                bullet.UpdateBullet();
-                if (bullet.dead) { }
+                Globals.Bullets[i].UpdateBullet();
+                if (Globals.Bullets[i].dead) { deadBullets.Add(i); }//Globals.Bullets.Remove(bullet); }
+            }
+            if (deadBullets.Count > 0)
+            {
+                for (int i = deadBullets.Count-1; i > 0; i--)
+                {
+                    Globals.Bullets.RemoveAt(deadBullets[i]);
+
+                }
             }
         }
 
@@ -112,6 +121,7 @@ namespace GameTrench
                 updateGroup(i); 
 
             updateSoldiers();
+            updateBullets();
 
             if (MouseInput.CurrMode == MouseMode.Selected)
             {
@@ -251,6 +261,10 @@ namespace GameTrench
         {
             DrawRecOfMouse(device);
             DrawSoldiers();
+            foreach(Bullet bullet in Globals.Bullets)
+            {
+                bullet.DrawBullet(device);
+            }
 
         }
 
