@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/User/source/repos/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</SourceFile>
-  <SourceTime>2021-07-02T03:03:26.7234558+05:00</SourceTime>
-  <DestFile>C:/Users/User/source/repos/GameOfTheYear/Content/bin/Windows/Content/ArtilleryStrikeIconSelected.xnb</DestFile>
-  <DestTime>2021-07-02T03:03:41.0732665+05:00</DestTime>
+  <SourceFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</SourceFile>
+  <SourceTime>2021-07-02T02:36:54.3092747+05:00</SourceTime>
+  <DestFile>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/bin/Windows/Content/ArtilleryStrikeIconSelected.xnb</DestFile>
+  <DestTime>2021-07-02T15:11:21.2339897+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

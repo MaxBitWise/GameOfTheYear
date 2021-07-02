@@ -9,6 +9,38 @@ using System.Threading;
 
 namespace GameTrench
 { 
+    public struct MouseAdapted
+    {
+        public float rawX;
+        public float rawY;
+        public bool LeftPressed;
+        public bool RightPressed;
+        public MouseAdapted(MouseState FullState)
+        {
+            rawX = FullState.X;
+            rawY = FullState.Y;
+            if (FullState.LeftButton == ButtonState.Pressed) { LeftPressed = true; }
+            else LeftPressed = false;
+            if (FullState.RightButton == ButtonState.Pressed) { RightPressed = true; }
+            else RightPressed = false;
+        }
+        public Vector2 ScaledVector2()
+        {
+            return new Vector2(X * Resolution.DetermineDrawScaling().X, Y * Resolution.DetermineDrawScaling().Y); 
+        }
+        public Point ScaledPoint()
+        {
+            return new Point((int)(X * Resolution.DetermineDrawScaling().X), (int)(Y * Resolution.DetermineDrawScaling().Y));
+        }
+        public float X
+        {
+            get { return rawX / Resolution.DetermineDrawScaling().X; }
+        }
+        public float Y
+        {
+            get { return rawY / Resolution.DetermineDrawScaling().Y; }
+        }
+    }
     static class MouseInput
     {
         static Texture2D rectangleBlock;
@@ -18,9 +50,10 @@ namespace GameTrench
 
         public static void Update(GraphicsDevice device)
         {
-            MouseState currentMouseState = Mouse.GetState();
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && currentMouseState.X <= 200 * Resolution.DetermineDrawScaling().X &&
-                Globals.lastMouseState.LeftButton == ButtonState.Released && Globals.wasSelected == false)
+
+            MouseAdapted currentMouseState = new MouseAdapted(Mouse.GetState());
+            if (currentMouseState.LeftPressed  && currentMouseState.X <= 200 &&
+                !Globals.lastMouseState.LeftPressed && Globals.wasSelected == false)
             {
                 startPosition.X = currentMouseState.X;
                 startPosition.Y = currentMouseState.Y;
@@ -28,14 +61,14 @@ namespace GameTrench
                 endPosition.Y = currentMouseState.Y;
                 isSelect = true;
             }
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed  && 
-                Globals.lastMouseState.LeftButton == ButtonState.Pressed && isSelect && Globals.wasSelected == false)
+            if (currentMouseState.LeftPressed &&
+               Globals.lastMouseState.LeftPressed && isSelect && Globals.wasSelected == false)
             {
                 endPosition.X = currentMouseState.X;
                 endPosition.Y = currentMouseState.Y;
                 
             }
-            if (Mouse.GetState().LeftButton == ButtonState.Released && isSelect != false)
+            if (!currentMouseState.LeftPressed && isSelect != false)
             {
                 isSelect = false;
                 Globals.wasSelected = true;
@@ -52,24 +85,32 @@ namespace GameTrench
                     Globals.recOfLastSelection.Z = 130;
                     Globals.recOfLastSelection.W = startPosition.Y;
                 }
-                if (Mouse.GetState().Y < 250 && Mouse.GetState().LeftButton == ButtonState.Pressed && Globals.lastMouseState.LeftButton == ButtonState.Released)
+           /*     if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
                 {
-                    InterfaceState.InterfaceClick(Mouse.GetState());
+                    InterfaceState.InterfaceClick(currentMouseState);
                 }
-                if (Mouse.GetState().RightButton == ButtonState.Pressed && Globals.lastMouseState.RightButton == ButtonState.Released)
+                if (currentMouseState.RightPressed && !Globals.lastMouseState.RightPressed)
                 {
-                    InterfaceState.InterfaceClick(Mouse.GetState());
-                }
+                    InterfaceState.InterfaceClick(currentMouseState);
+                }*/
 
             }
-            if (Mouse.GetState().Y < 250 && Mouse.GetState().LeftButton == ButtonState.Pressed && Globals.lastMouseState.LeftButton == ButtonState.Released)
+            if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            {
+                InterfaceState.InterfaceClick(currentMouseState);
+            }
+            if (currentMouseState.RightPressed && !Globals.lastMouseState.RightPressed)
+            {
+                InterfaceState.InterfaceClick(currentMouseState);
+            }
+           /* if (Mouse.GetState().Y < 250 && Mouse.GetState().LeftButton == ButtonState.Pressed && Globals.lastMouseState.LeftButton == ButtonState.Released)
             {
                 InterfaceState.InterfaceClick(Mouse.GetState());
             }
             if (Mouse.GetState().RightButton == ButtonState.Pressed && Globals.lastMouseState.RightButton == ButtonState.Released)
             {
                 InterfaceState.InterfaceClick(Mouse.GetState());
-            }
+            }*/
 
             Globals.lastMouseState = currentMouseState;
         }
@@ -83,12 +124,12 @@ namespace GameTrench
                 rectangleBlock.SetData(new[] { xnaColorBorder });
 
                 //Globals._spriteBatch.Begin();
-                Point position = new Point((int)(50 *Resolution.DetermineDrawScaling().X), (int)(startPosition.Y)); // position
+                Point position = new Point((int)(50 *Resolution.DetermineDrawScaling().X), (int)(startPosition.Y* Resolution.DetermineDrawScaling().Y)); // position
                 if (startPosition.Y > endPosition.Y)
                 {
                     position = new Point((int)((int)50 * Resolution.DetermineDrawScaling().X), (int)(endPosition.Y));
                 }
-                Point size = new Point((int)(80 * Resolution.DetermineDrawScaling().X), (int)Math.Abs((int)endPosition.Y - (int)startPosition.Y)); // size
+                Point size = new Point((int)(80 * Resolution.DetermineDrawScaling().X), (int)((int)Math.Abs((int)endPosition.Y - (int)startPosition.Y) * Resolution.DetermineDrawScaling().Y)); // size
 
                 Globals._spriteBatch.DrawString(Globals.font, new String(endPosition.X.ToString() +" "+ endPosition.Y.ToString()), new Vector2(300, 70), Color.Blue);
                 Rectangle rectangle = new Rectangle(position, size);

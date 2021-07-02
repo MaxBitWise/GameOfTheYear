@@ -194,7 +194,7 @@ namespace GameTrench
        // BunkerUp = 11,
        // ArtileryStrikeUp = 12
 
-        public static void InterfaceClick(MouseState Mouse)
+        public static void InterfaceClick(MouseAdapted Mouse)
         {
             bool missClick = true;
             foreach( Button button in ButtonsArr)

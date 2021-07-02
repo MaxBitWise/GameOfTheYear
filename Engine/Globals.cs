@@ -35,7 +35,7 @@ namespace GameTrench
     };
     static class Globals
     {
-        public static MouseState lastMouseState;
+        public static MouseAdapted lastMouseState;
         public static List<Soldier> humanunits = new List<Soldier>();
         public static int humanunitsCount = 0;
         public static List<Soldier> aiunits = new List<Soldier>();
