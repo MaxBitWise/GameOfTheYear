@@ -30,6 +30,13 @@ namespace GameTrench
                     FindFireTarget(indexes);
             }
         }
-        public override void UpdateUnit() { }
+        public override void UpdateUnit()
+        {
+            if (cooldown > 0) { cooldown--; }
+            else
+            {
+                FindFireTarget();
+            }
+        }
     }
 }

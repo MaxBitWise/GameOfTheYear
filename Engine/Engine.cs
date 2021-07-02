@@ -15,11 +15,13 @@ namespace GameTrench
         {
             for (int i = 0; Globals.aiunitsCount < 882; i++)
             {
-                Globals.humanunits.Add(new Soldier(true));
-                Globals.aiunits.Add(new Soldier(false));
+                Globals.humanunits.Add(new Soldier(true, new Vector2(Globals.trenchArrHum[i].X, Globals.trenchArrHum[i].Y)));
+                Globals.aiunits.Add(new Soldier(false, new Vector2(Globals.trenchArrAi[i].X, Globals.trenchArrAi[i].Y)));
                 Globals.aiunitsCount++;
+                Globals.humanunitsCount++;
             }
-        }
+            Globals.isSpawned = true;
+        }/*
         public static void spawnHumanunits()
         {
             int j = 0;
@@ -51,7 +53,7 @@ namespace GameTrench
                     j++;
                 }
             }
-        }
+        }*/
         public static void createTrenches()
         {
             int x = 50;
@@ -96,7 +98,7 @@ namespace GameTrench
             }
             if (deadBullets.Count > 0)
             {
-                for (int i = deadBullets.Count-1; i > 0; i--)
+                for (int i = deadBullets.Count-1; i >= 0; i--)
                 {
                     Globals.Bullets.RemoveAt(deadBullets[i]);
 
@@ -115,18 +117,15 @@ namespace GameTrench
                 Strike.UpdateArtilleryStrike();
             }
 
-            if (Globals.humanunitsCount < 882)
-            {
-                spawnHumanunits();
-            }
-            if (Globals.aiunitsCount < 882)
-            {
-                spawnAiunits();
-            }
+            if (!Globals.isSpawned)
+                spawnsoldiers();
+            
 
             for (int i = 0; i < Globals.groups.Count; i++)
                 updateGroup(i);
-
+            for (int i = 0; i < Globals.groupsAI.Count; i++)
+                UpdateGroupAI(i);
+            UpdateDOTS();
             updateSoldiers();
             updateBullets();
 
@@ -141,6 +140,9 @@ namespace GameTrench
                 }
                 
             }
+            KeyboardState keystate = Keyboard.GetState();
+            if (keystate.IsKeyDown(Keys.G) == true) 
+                CreateGroupForAI(300, 500);
         }
 
         private static int IncomeCounter = Globals.IncomeTimer;
@@ -187,7 +189,7 @@ namespace GameTrench
         }
         static void rightGroup(int numberGroup)
         {
-            if (Globals.groups.Count != 0)
+            if (Globals.groups[numberGroup].Second.Count != 0)
             {
                 int heightSelection = (int)(Globals.recOfLastSelection.W - Globals.recOfLastSelection.Y);
                 int weightSelection = (int)(Globals.recOfLastSelection.Z - Globals.recOfLastSelection.X);
@@ -231,7 +233,7 @@ namespace GameTrench
             int numberOfSoldier = 0;
             while (numberOfSoldier < Globals.groups[numberGroup].Second.Count)
             {
-                Globals.groups[numberGroup].Second[numberOfSoldier].destination.X += 1800;
+                Globals.groups[numberGroup].Second[numberOfSoldier].destination.X += 1740;
                 numberOfSoldier++;
             }
             Globals.groups[numberGroup].Third = true;
@@ -239,83 +241,90 @@ namespace GameTrench
 
         static void updateGroup(int numberGroup)
         {
-            Globals.groups[numberGroup].Fourth = new Vector3(Globals.groups[numberGroup].Second[0].position.X, 
+            if (Globals.groups[numberGroup].Second.Count > 0)
+            {
+                Globals.groups[numberGroup].Fourth = new Vector3(Globals.groups[numberGroup].Second[0].position.X,
                 Globals.groups[numberGroup].Fourth.Y, Globals.groups[numberGroup].Fourth.Z);
-            if (Globals.groups[numberGroup].First == GroupStates.Order)
+                if (Globals.groups[numberGroup].First == GroupStates.Order)
+                {
+                    if (!Globals.groups[numberGroup].Third)
+                        rightGroup(numberGroup);
+                    bool allInPlaces = true;
+                    foreach (Soldier sold in Globals.groups[numberGroup].Second)
+                    {
+                        if (sold.position.X != sold.destination.X ||
+                            sold.position.Y != sold.destination.Y)
+                        {
+                            allInPlaces = false;
+                            break;
+                        }
+                    }
+                    if (allInPlaces)
+                    {
+                        Globals.groups[numberGroup].Third = false;
+                        Globals.groups[numberGroup].First = GroupStates.MoveAttack;
+                    }
+                    foreach (Unit sold in Globals.groups[numberGroup].Second)
+                        sold.UpdateUnit();
+                }
+                else if (Globals.groups[numberGroup].First == GroupStates.MoveAttack)
+                {
+                    if (!Globals.groups[numberGroup].Third)
+                        moveAttackGroup(numberGroup);
+                    bool allInPlaces = true;
+                    foreach (Soldier sold in Globals.groups[numberGroup].Second)
+                    {
+                        if (sold.position.X != sold.destination.X ||
+                            sold.position.Y != sold.destination.Y)
+                        {
+                            allInPlaces = false;
+                            break;
+                        }
+                    }
+                    if (allInPlaces)
+                    {
+                        Globals.groups[numberGroup].Third = false;
+                        Globals.groups[numberGroup].First = GroupStates.Stand;
+                    }
+
+                    var RealIndex = new List<int>();
+
+                    for (int i = 0; i < Globals.groupsAI.Count; i++)
+                    {
+                        float dXUp = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
+                        float dYUp = Globals.groups[numberGroup].Fourth.Y - Globals.groupsAI[i].Fourth.Y;
+
+                        float hypotenuseUp = (float)Math.Sqrt(dXUp * dXUp + dYUp * dYUp);
+                        if (hypotenuseUp < Globals.SoldierRange)
+                        {
+                            RealIndex.Add(i);
+                        }
+                        float dXDown = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
+                        float dYDown = Globals.groups[numberGroup].Fourth.Z - Globals.groupsAI[i].Fourth.Y;
+
+                        float hypotenuseDown = (float)Math.Sqrt(dXDown * dXDown + dYDown * dYDown);
+                        if (hypotenuseDown < Globals.SoldierRange)
+                        {
+                            RealIndex.Add(i);
+                        }
+
+                    }
+                    if (1790 - Globals.groups[numberGroup].Fourth.X < Globals.SoldierRange)
+                    {
+                        RealIndex.Add(-1);
+                    }
+                    foreach (Unit sold in Globals.groups[numberGroup].Second)
+                        sold.UpdateUnit(RealIndex);
+                }
+                else if (Globals.groups[numberGroup].First == GroupStates.Stand)
+                {
+
+                }
+            }else
             {
-                if (!Globals.groups[numberGroup].Third)
-                    rightGroup(numberGroup);
-                bool allInPlaces = true;
-                foreach (Soldier sold in Globals.groups[numberGroup].Second) 
-                {
-                    if (sold.position.X != sold.destination.X ||
-                        sold.position.Y != sold.destination.Y)
-                    {
-                        allInPlaces = false;
-                        break;
-                    }
-                }
-                if (allInPlaces)
-                {
-                    Globals.groups[numberGroup].Third = false;
-                    Globals.groups[numberGroup].First = GroupStates.MoveAttack;
-                }
-                foreach (Unit sold in Globals.groups[numberGroup].Second)
-                    sold.UpdateUnit();
+                Globals.groups.RemoveAt(numberGroup);
             }
-            else if (Globals.groups[numberGroup].First == GroupStates.MoveAttack)
-            {
-                if (!Globals.groups[numberGroup].Third)
-                    moveAttackGroup(numberGroup);
-                bool allInPlaces = true;
-                foreach (Soldier sold in Globals.groups[numberGroup].Second)
-                {
-                    if (sold.position.X != sold.destination.X ||
-                        sold.position.Y != sold.destination.Y)
-                    {
-                        allInPlaces = false;
-                        break;
-                    }
-                }
-                if (allInPlaces)
-                {
-                    Globals.groups[numberGroup].Third = false;
-                    Globals.groups[numberGroup].First = GroupStates.Stand;
-                }
-
-                var RealIndex = new List<int>();
-
-                for (int i = 0; i < Globals.groupsAI.Count; i++)
-                {
-                    float dXUp = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
-                    float dYUp = Globals.groups[numberGroup].Fourth.Y - Globals.groupsAI[i].Fourth.Y;
-
-                    float hypotenuseUp = (float)Math.Sqrt(dXUp * dXUp + dYUp * dYUp);
-                    if (hypotenuseUp < Globals.SoldierRange)
-                    {
-                        RealIndex.Add(i);
-                    }
-                    float dXDown = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
-                    float dYDown = Globals.groups[numberGroup].Fourth.Z - Globals.groupsAI[i].Fourth.Y;
-
-                    float hypotenuseDown = (float)Math.Sqrt(dXDown * dXDown + dYDown * dYDown);
-                    if (hypotenuseDown < Globals.SoldierRange)
-                    {
-                        RealIndex.Add(i);
-                    }
-                    
-                }
-                if (1790 - Globals.groups[numberGroup].Fourth.X < Globals.SoldierRange)
-                {
-                    RealIndex.Add(-1);
-                }
-                foreach (Unit sold in Globals.groups[numberGroup].Second)
-                    sold.UpdateUnit(RealIndex);
-            }
-            else if (Globals.groups[numberGroup].First == GroupStates.Stand)
-            {
-
-            }
+            
         }
 
         public static void Draw(GraphicsDevice device)
@@ -347,13 +356,29 @@ namespace GameTrench
                     Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
                         Resolution.ScaledPoint(sold.drawSize)), Color.White);
             }
-            
+
+            for (int i = 0; i < Globals.groupsAI.Count; i++)
+            {
+                foreach (Unit sold in Globals.groupsAI[i].Second)
+                    Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
+                        Resolution.ScaledPoint(sold.drawSize)), Color.White);
+            }
+
             foreach (Unit sold in Globals.humanunits)
                 Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)), 
                     Resolution.ScaledPoint(sold.drawSize)), Color.White);
             foreach (Unit sold in Globals.aiunits)
                 Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
                     Resolution.ScaledPoint(sold.drawSize)), Color.White);
+
+            foreach (Unit bunker in Globals.groupBunker)
+                Globals._spriteBatch.Draw(bunker.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)bunker.position.X, (int)bunker.position.Y)),
+                    Resolution.ScaledPoint(bunker.drawSize)), Color.White);
+
+            foreach (Unit machinegun in Globals.groupMachinegun)
+                Globals._spriteBatch.Draw(machinegun.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)machinegun.position.X, 
+                    (int)machinegun.position.Y)),
+                    Resolution.ScaledPoint(machinegun.drawSize)), Color.White);
         }
         
 
@@ -384,9 +409,9 @@ namespace GameTrench
         public static void UpdateGroupInTrenchAI()
         {
             var RealIndex = new List<int>();
-            for (int i = 0; i < Globals.groupsAI.Count; i++)
+            for (int i = 0; i < Globals.groups.Count; i++)
             {
-                if (Globals.groupsAI[i].Fourth.X - 130 < Globals.SoldierRange)
+                if (1790 - Globals.groups[i].Fourth.X < Globals.SoldierRange)
                 {
                     RealIndex.Add(i);
                 }
@@ -396,13 +421,196 @@ namespace GameTrench
 
         public static void UpdateGroupInFieldAI()
         {
-            for (int i = 0; i < Globals.groups.Count; i++)
+            for (int i = 0; i < Globals.groupsAI.Count; i++)
             {
-                foreach (Unit sold in Globals.groups[i].Second)
+                foreach (Unit sold in Globals.groupsAI[i].Second)
                 {
                     sold.UpdateUnit();
                 }
             }
         }
+
+        public static void UpdateDOTS()
+        {
+            foreach (Unit bunker in Globals.groupBunker)
+                bunker.UpdateUnit();
+            foreach (Unit machinegun in Globals.groupMachinegun)
+                machinegun.UpdateUnit();
+        }
+
+        public static void CreateGroupForAI(int YStart, int YEnd)
+        {
+            Tuple<GroupStates, List<Unit>, bool, Vector3> newGroup = new Tuple<GroupStates, List<Unit>, bool, Vector3>();
+            newGroup.Second = new List<Unit>();
+            var delSoldFromTrench = new List<int>();
+
+            for (int i = 0; i < Globals.aiunits.Count; i++)
+            {
+                if (Globals.aiunits[i].position.X <= 1870 &&
+                    Globals.aiunits[i].position.X >= 1790 &&
+                    Globals.aiunits[i].position.Y >= YStart &&
+                    Globals.aiunits[i].position.Y <= YEnd)
+                {
+                    newGroup.Second.Add(Globals.aiunits[i]);
+                    delSoldFromTrench.Add(i);
+                }
+            }
+            if (newGroup.Second.Count != 0)
+            {
+                newGroup.First = GroupStates.Order;
+                newGroup.Third = false;
+                newGroup.Fourth = new Vector3(Globals.recOfLastSelection.Z, YStart, YEnd);
+                Globals.groupsAI.Add(newGroup);
+            }
+            if (delSoldFromTrench.Count > 0)
+            {
+                for (int i = delSoldFromTrench.Count - 1; i >= 0; i--)
+                {
+                    Globals.aiunits.RemoveAt(delSoldFromTrench[i]);
+                }
+            }
+        }
+
+        public static void moveAttackAI(int numberGroup)
+        {
+            int numberOfSoldier = 0;
+            while (numberOfSoldier < Globals.groupsAI[numberGroup].Second.Count)
+            {
+                Globals.groupsAI[numberGroup].Second[numberOfSoldier].destination.X -= 1660;
+                numberOfSoldier++;
+            }
+            Globals.groupsAI[numberGroup].Third = true;
+        }
+
+        static void rightGroupAI(int numberGroup)
+        {
+            if (Globals.groups.Count != 0)
+            {
+                int heightSelection = (int)(Globals.groupsAI[numberGroup].Fourth.Z - Globals.groupsAI[numberGroup].Fourth.Y);
+                
+                int soldInLineStep = heightSelection / Globals.groupsAI[numberGroup].Second.Count;
+                if (soldInLineStep < 8)
+                {
+                    soldInLineStep = 8;
+                }
+                int xInGroup = 130 - (soldInLineStep);
+                int yInGroup = (int)Globals.groupsAI[numberGroup].Fourth.Y + (soldInLineStep / 2);
+                int numberOfSoldier = 0;
+                int soldiersLeft = Globals.groupsAI[numberGroup].Second.Count;
+                while (numberOfSoldier < Globals.groupsAI[numberGroup].Second.Count)
+                {
+                    if (yInGroup < Globals.groupsAI[numberGroup].Fourth.Z)
+                    {
+                        Globals.groupsAI[numberGroup].Second[numberOfSoldier].destination.X = xInGroup;
+                        Globals.groupsAI[numberGroup].Second[numberOfSoldier].destination.Y = yInGroup;
+                        soldiersLeft--;
+                        yInGroup += soldInLineStep;
+                    }
+                    else if (yInGroup >= Globals.groupsAI[numberGroup].Fourth.Z)
+                    {
+                        if (heightSelection / soldiersLeft > 8)
+                        {
+                            soldInLineStep = heightSelection / soldiersLeft;
+                        }
+                        yInGroup = (int)(Globals.groupsAI[numberGroup].Fourth.Y + soldInLineStep / 2);
+                        xInGroup -= 8;
+                        Globals.groupsAI[numberGroup].Second[numberOfSoldier].destination.X = xInGroup;
+                        Globals.groupsAI[numberGroup].Second[numberOfSoldier].destination.Y = yInGroup;
+                        soldiersLeft--;
+                    }
+                    numberOfSoldier++;
+                }
+            }
+            Globals.groupsAI[numberGroup].Third = true;
+        }
+
+        public static void UpdateGroupAI(int numberGroup)
+        {
+            if (Globals.groupsAI[numberGroup].Second.Count > 0)
+            {
+                Globals.groupsAI[numberGroup].Fourth = new Vector3(Globals.groupsAI[numberGroup].Second[0].position.X,
+                Globals.groupsAI[numberGroup].Fourth.Y, Globals.groupsAI[numberGroup].Fourth.Z);
+                if (Globals.groupsAI[numberGroup].First == GroupStates.Order)
+                {
+                    if (!Globals.groupsAI[numberGroup].Third)
+                        rightGroupAI(numberGroup);
+                    bool allInPlaces = true;
+                    foreach (Soldier sold in Globals.groupsAI[numberGroup].Second)
+                    {
+                        if (sold.position.X != sold.destination.X ||
+                            sold.position.Y != sold.destination.Y)
+                        {
+                            allInPlaces = false;
+                            break;
+                        }
+                    }
+                    if (allInPlaces)
+                    {
+                        Globals.groupsAI[numberGroup].Third = false;
+                        Globals.groupsAI[numberGroup].First = GroupStates.MoveAttack;
+                    }
+                    foreach (Unit sold in Globals.groupsAI[numberGroup].Second)
+                        sold.UpdateUnit();
+                }
+                else if (Globals.groupsAI[numberGroup].First == GroupStates.MoveAttack)
+                {
+                    if (!Globals.groupsAI[numberGroup].Third)
+                        moveAttackAI(numberGroup);
+                    bool allInPlaces = true;
+                    foreach (Soldier sold in Globals.groupsAI[numberGroup].Second)
+                    {
+                        if (sold.position.X != sold.destination.X ||
+                            sold.position.Y != sold.destination.Y)
+                        {
+                            allInPlaces = false;
+                            break;
+                        }
+                    }
+                    if (allInPlaces)
+                    {
+                        Globals.groupsAI[numberGroup].Third = false;
+                        Globals.groupsAI[numberGroup].First = GroupStates.Stand;
+                    }
+
+                    var RealIndex = new List<int>();
+
+                    for (int i = 0; i < Globals.groups.Count; i++)
+                    {
+                        float dXUp = Globals.groupsAI[numberGroup].Fourth.X - Globals.groups[i].Fourth.X;
+                        float dYUp = Globals.groupsAI[numberGroup].Fourth.Y - Globals.groups[i].Fourth.Y;
+
+                        float hypotenuseUp = (float)Math.Sqrt(dXUp * dXUp + dYUp * dYUp);
+                        if (hypotenuseUp < Globals.SoldierRange)
+                        {
+                            RealIndex.Add(i);
+                        }
+                        float dXDown = Globals.groupsAI[numberGroup].Fourth.X - Globals.groups[i].Fourth.X;
+                        float dYDown = Globals.groupsAI[numberGroup].Fourth.Z - Globals.groups[i].Fourth.Y;
+
+                        float hypotenuseDown = (float)Math.Sqrt(dXDown * dXDown + dYDown * dYDown);
+                        if (hypotenuseDown < Globals.SoldierRange)
+                        {
+                            RealIndex.Add(i);
+                        }
+
+                    }
+                    if (Globals.groupsAI[numberGroup].Fourth.X - 130 < Globals.SoldierRange)
+                    {
+                        RealIndex.Add(-1);
+                    }
+                    foreach (Unit sold in Globals.groupsAI[numberGroup].Second)
+                        sold.UpdateUnit(RealIndex);
+                }
+                else if (Globals.groupsAI[numberGroup].First == GroupStates.Stand)
+                {
+
+                }
+            }else
+            {
+                Globals.groupsAI.RemoveAt(numberGroup);
+            }
+                
+        }
+
     }
 }

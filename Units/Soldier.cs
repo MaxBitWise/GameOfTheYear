@@ -10,7 +10,7 @@ namespace GameTrench
     public class Soldier : Unit
     {
         private Vector2 nextPosition;
-        public int speed = 20;
+        public int speed = 5;
         public Soldier(bool sidein) 
         {
             Random rand = new Random();
