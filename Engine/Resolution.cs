@@ -82,5 +82,11 @@ namespace GameTrench
             P.Y = (int)(P.Y * _preferredBackBufferHeight / VirtualScreen.Y);
             return new Point(P.X, P.Y);
         }
+        public static Vector2 ScaledVector2(Vector2 V2)
+        {
+            V2.X = (int)(V2.X * _preferredBackBufferWidth / VirtualScreen.X);
+            V2.Y = (int)(V2.Y * _preferredBackBufferHeight / VirtualScreen.Y);
+            return new Vector2(V2.X, V2.Y);
+        }
     }
 }

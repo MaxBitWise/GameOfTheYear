@@ -8,14 +8,85 @@ namespace GameTrench
 {
     public class Unit
     {
+
+
+
         public Vector2 position;
         public Vector2 destination;
         public bool side;
         public int hp;
         public int cooldown;
+        public int FireRate;
+        public int FireDmg;
+        public int FireRange;
+        public int FireAccuracy;
         public Unit()
         {
             
         }
+
+        public void FindFireTarget()
+        {
+            if(side)
+            {
+                //var PossibleTargets = new List<Unit>();
+                var RealIndex = new List<int>();
+                for(int i = 0; i < Globals.aiunits.Count; i++ )
+                { 
+                    float dX = position.X - Globals.aiunits[i].position.X;
+                    float dY = position.Y - Globals.aiunits[i].position.Y;
+
+                    float hypotenuse = (float)Math.Sqrt(dX * dX + dY * dY);
+                    if (hypotenuse < FireRange)
+                    {
+                       // PossibleTargets.Add(Globals.aiunits[i]);
+                        RealIndex.Add(i);
+                    }
+                }
+                if(RealIndex.Count > 0)
+                {
+                    Random rand = new Random();
+                    int targetIndexInRange = rand.Next((int)(RealIndex.Count));
+                    Fire(RealIndex[targetIndexInRange]);
+                }
+            }
+            if (!side)
+            {
+                //var PossibleTargets = new List<Unit>();
+                var RealIndex = new List<int>();
+                for (int i = 0; i < Globals.humanunits.Count; i++)
+                {
+                    float dX = position.X - Globals.humanunits[i].position.X;
+                    float dY = position.Y - Globals.humanunits[i].position.Y;
+
+                    float hypotenuse = (float)Math.Sqrt(dX * dX + dY * dY);
+                    if (hypotenuse < FireRange)
+                    {
+                        // PossibleTargets.Add(Globals.aiunits[i]);
+                        RealIndex.Add(i);
+                    }
+                }
+                if (RealIndex.Count > 0)
+                {
+                    Random rand = new Random();
+                    int targetIndexInRange = rand.Next((int)(RealIndex.Count));
+                    Fire(RealIndex[targetIndexInRange]);
+                }
+            }
+
+        }
+
+        public void Fire(int EnemyIndex)
+        {
+            if(side) Globals.aiunits[EnemyIndex].Die();
+            if(!side) Globals.humanunits[EnemyIndex].Die();
+        }
+
+        public void Die()
+        {
+            position.X = 500;
+            position.Y = 500;
+        }
+
     }
 }

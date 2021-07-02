@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Bullet.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIconSelected.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Font.spritefont</File>
@@ -31,6 +32,7 @@
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

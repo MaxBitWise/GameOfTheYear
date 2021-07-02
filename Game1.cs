@@ -64,7 +64,8 @@ namespace GameTrench
             Globals.MenuIconTex = Content.Load<Texture2D>("MenuTex");
             Globals.MenuIconSelectedTex = Content.Load<Texture2D>("MenuTexSelected");
             Globals.TrenchUpIconTex = Content.Load<Texture2D>("TrenchUpIcon");
-            Globals.TrenchUpIconSelectedTex = Content.Load<Texture2D>("TrenchUpIconSelected"); ;
+            Globals.TrenchUpIconSelectedTex = Content.Load<Texture2D>("TrenchUpIconSelected");
+            Globals.BulletTex = Content.Load<Texture2D>("Bullet");
             InterfaceState.InitButtons();
         }
 

@@ -184,7 +184,7 @@ namespace GameTrench
             int numberOfSoldier = 0;
             while (numberOfSoldier < Globals.groups[numberGroup].Second.Count)
             {
-                Globals.groups[numberGroup].Second[numberOfSoldier].destination.X += 640;
+                Globals.groups[numberGroup].Second[numberOfSoldier].destination.X += 1800;
                 numberOfSoldier++;
             }
             Globals.groups[numberGroup].Third = true;
