@@ -16,22 +16,24 @@ namespace GameTrench
         MoveTrench = 3,
         Stand = 4
     }
-    public class Tuple<T, U, W>
+    public class Tuple<T, U, W, Z>
     {
         public Tuple()
         {
         }
 
-        public Tuple(T first, U second, W third)
+        public Tuple(T first, U second, W third, Z fourth)
         {
             this.First = first;
             this.Second = second;
             this.Third = third;
+            this.Fourth = fourth;
         }
 
         public T First { get; set; }
         public U Second { get; set; }
         public W Third { get; set; }
+        public Z Fourth { get; set; }
     };
     static class Globals
     {
@@ -44,7 +46,7 @@ namespace GameTrench
         public static List<Vector2> testArray = new List<Vector2>();
         public static List<Vector3> trenchArrHum = new List<Vector3>();
         public static List<Vector3> trenchArrAi = new List<Vector3>();
-        public static List<Tuple<GroupStates, List<Unit>, bool>> groups = new List<Tuple<GroupStates, List<Unit>, bool>>();
+        public static List<Tuple<GroupStates, List<Unit>, bool, Vector2>> groups = new List<Tuple<GroupStates, List<Unit>, bool, Vector2>>();
         public static bool wasSelected = false;
         public static bool creatGroup = false;
         public static bool writeTextForGroup = false;
