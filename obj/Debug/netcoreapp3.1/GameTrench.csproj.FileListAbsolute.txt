@@ -130,3 +130,7 @@ C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\Bunk
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MGFieldTex.xnb
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\gothic.xnb
 C:\Users\Alex\Desktop\C#\GOTY\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\blast.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\blast.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\BunkerFieldTex.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\gothic.xnb
+C:\Users\User\source\repos\GameOfTheYear\bin\Debug\netcoreapp3.1\Content\MGFieldTex.xnb
