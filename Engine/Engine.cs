@@ -122,9 +122,9 @@ namespace GameTrench
 
         static void selectionSoldiersHum()
         {
-            Tuple<GroupStates, List<Soldier>, bool> newGroup = new Tuple<GroupStates, List<Soldier>, bool>();
+            Tuple<GroupStates, List<Unit>, bool> newGroup = new Tuple<GroupStates, List<Unit>, bool>();
             newGroup.First = GroupStates.Order;
-            newGroup.Second = new List<Soldier>();
+            newGroup.Second = new List<Unit>();
             newGroup.Third = false;
             for (int i = 0; i < Globals.humanunits.Count; i++)
             {
@@ -189,6 +189,7 @@ namespace GameTrench
             }
             Globals.groups[numberGroup].Third = true;
         }
+
         static void updateGroup(int numberGroup)
         {
             if (Globals.groups[numberGroup].First == GroupStates.Order)

@@ -9,6 +9,7 @@ namespace GameTrench
     public class Unit
     {
         public Vector2 position;
+        public Vector2 destination;
         public bool side;
         public int hp;
         public int cooldown;

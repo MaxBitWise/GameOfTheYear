@@ -36,14 +36,14 @@ namespace GameTrench
     static class Globals
     {
         public static MouseAdapted lastMouseState;
-        public static List<Soldier> humanunits = new List<Soldier>();
+        public static List<Unit> humanunits = new List<Unit>();
         public static int humanunitsCount = 0;
-        public static List<Soldier> aiunits = new List<Soldier>();
+        public static List<Unit> aiunits = new List<Unit>();
         public static int aiunitsCount = 0;
         public static List<Vector2> testArray = new List<Vector2>();
         public static List<Vector3> trenchArrHum = new List<Vector3>();
         public static List<Vector3> trenchArrAi = new List<Vector3>();
-        public static List<Tuple<GroupStates, List<Soldier>, bool>> groups = new List<Tuple<GroupStates, List<Soldier>, bool>>();
+        public static List<Tuple<GroupStates, List<Unit>, bool>> groups = new List<Tuple<GroupStates, List<Unit>, bool>>();
         public static bool wasSelected = false;
         public static bool creatGroup = false;
         public static bool writeTextForGroup = false;

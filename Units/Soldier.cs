@@ -6,7 +6,6 @@ namespace GameTrench
 {
     public class Soldier : Unit
     {
-        public Vector2 destination = new Vector2(400,300);
         private Vector2 nextPosition;
         public int speed = 2;
         public Soldier(bool side) 
