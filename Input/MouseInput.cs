@@ -111,7 +111,7 @@ namespace GameTrench
             {
                 if (Globals.MoneyBalance > Globals.BunkerCost)
                 {
-                    Globals.humanunits.Add(new Bunker(true, currentMouseState.Y));
+                    Globals.groupBunker.Add(new Bunker(true, currentMouseState.Y));
                     Globals.MoneyBalance -= Globals.BunkerCost;
                 }
                 CurrMode = MouseMode.Default;
@@ -121,7 +121,7 @@ namespace GameTrench
             {
                 if (Globals.MoneyBalance > Globals.MGCost)
                 {
-                    Globals.humanunits.Add(new Machinegun(true, currentMouseState.Y));
+                    Globals.groupMachinegun.Add(new Machinegun(true, currentMouseState.Y));
                     Globals.MoneyBalance -= Globals.MGCost;
                 }    
                 CurrMode = MouseMode.Default;
