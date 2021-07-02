@@ -109,6 +109,12 @@ namespace GameTrench
             Resolution.Update(Globals._graphics);
             MouseInput.Update(device);
             moneyUpdate();
+
+            foreach(ArtilleryStrike Strike in Globals.Strikes)
+            {
+                Strike.UpdateArtilleryStrike();
+            }
+
             if (Globals.humanunitsCount < 882)
             {
                 spawnHumanunits();
@@ -280,6 +286,10 @@ namespace GameTrench
             foreach (Bullet bullet in Globals.Bullets)
             {
                 bullet.DrawBullet(device);
+            }
+            foreach (ArtilleryStrike Strike in Globals.Strikes)
+            {
+                Strike.DrawBlasts(device);
             }
 
         }

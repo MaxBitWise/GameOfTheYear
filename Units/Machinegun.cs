@@ -13,10 +13,10 @@ namespace GameTrench
             else position = new Vector2(1000, Y);
             side = sidein;
             hp = Globals.MGHP;
-            UnitTex = Globals.MachinegunIconTex;
+            UnitTex = Globals.MGFieldTex;
             FireRate = Globals.MGFireRate;
             FireDmg = Globals.MGDmg;
-            FireRange = Globals.MGRange;
+            FireRange = 2000;//Globals.MGRange;
             FireAccuracy = Globals.MGAccuracy;
             cooldown = 0;
             drawSize = new Point(48, 48);

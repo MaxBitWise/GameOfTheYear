@@ -6,16 +6,20 @@
   <SourceFiles>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/blast.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Bullet.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerFieldTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIconSelected.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Font.spritefont</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/FontBold.spritefont</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/gothic.spritefont</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/InterfaceBackgroundTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIcon.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIconSelected.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTexSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MGFieldTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100SelectedTex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100Tex.png</File>
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select25SelectedTex.png</File>
@@ -32,6 +36,10 @@
     <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
