@@ -107,6 +107,12 @@ namespace GameTrench
 
         #endregion
 
+        #region GameDesignValues
+        public static int MoneyBalance = 100;
+        public static int IncomeTimer = 600; //In frames
+        public static int IncomeValue = 10;
+        #endregion
+
         public static double timer = 0;
         public static double distance = 0;
         public static Random rand = new Random();

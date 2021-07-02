@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
 namespace GameTrench
 {
     public class Soldier : Unit
@@ -24,6 +27,8 @@ namespace GameTrench
             FireDmg = Globals.SoldierDmg;
             FireRange = Globals.SoldierRange;
             FireAccuracy = Globals.SoldierAccuracy;
+            UnitTex = Globals.texture;
+            drawSize = new Point(8, 8);
     }
         public Soldier(bool sidein, Vector2 dest)
         {
@@ -42,6 +47,8 @@ namespace GameTrench
             FireDmg = Globals.SoldierDmg;
             FireRange = Globals.SoldierRange;
             FireAccuracy = Globals.SoldierAccuracy;
+            UnitTex = Globals.texture;
+            drawSize = new Point(8, 8);
         }
 
         private Vector2 CalculateNextPosition()
@@ -65,7 +72,7 @@ namespace GameTrench
             }
             return result;
         }
-        public void UpdateSoldier()
+        public override void UpdateUnit()
         {
             if (cooldown > 0) { cooldown--; }
             else

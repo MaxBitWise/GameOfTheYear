@@ -4,32 +4,32 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/ArtilleryStrikeIcon.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Bullet.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/BunkerIcon.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/BunkerIconSelected.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Font.spritefont</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/FontBold.spritefont</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/InterfaceBackgroundTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/MachinegunIcon.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/MachinegunIconSelected.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/MenuTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/MenuTexSelected.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select100SelectedTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select100Tex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select25SelectedTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select25Tex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select50SelectedTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select50Tex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select75SelectedTex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/Select75Tex.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldier.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldieranimation.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/soldierBIG.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/trench.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/TrenchUpIcon.png</File>
-    <File>C:/Users/User/source/repos/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/ArtilleryStrikeIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Bullet.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/BunkerIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Font.spritefont</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/FontBold.spritefont</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/InterfaceBackgroundTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MachinegunIconSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/MenuTexSelected.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select100Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select25SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select25Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select50SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select50Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select75SelectedTex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/Select75Tex.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldier.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldieranimation.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/soldierBIG.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/trench.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIcon.png</File>
+    <File>C:/Users/Alex/Desktop/C#/GOTY/GameOfTheYear/Content/TrenchUpIconSelected.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

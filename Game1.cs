@@ -97,10 +97,10 @@ namespace GameTrench
             Globals._spriteBatch.Begin();
             drawBackground();
             Engine.Draw(GraphicsDevice);
-            double fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
-            Globals._spriteBatch.DrawString(Globals.font, fps.ToString(), new Vector2(300, 20), Color.White);
-            Globals._spriteBatch.DrawString(Globals.font, (Globals.humanunits.Count*2).ToString(), new Vector2(300, 10), Color.White);
-            InterfaceState.DrawButtons(GraphicsDevice);
+    //        double fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
+    //        Globals._spriteBatch.DrawString(Globals.font, fps.ToString(), new Vector2(300, 20), Color.White);
+    //        Globals._spriteBatch.DrawString(Globals.font, (Globals.humanunits.Count*2).ToString(), new Vector2(300, 10), Color.White);
+
             Globals._spriteBatch.End();
             
             base.Draw(gameTime);

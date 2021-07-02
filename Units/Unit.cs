@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace GameTrench
 {
-    public class Unit
+    public abstract class Unit
     {
 
-
-
+        public Point drawSize;
+        public Texture2D UnitTex;
         public Vector2 position;
         public Vector2 destination;
         public bool side;
@@ -83,7 +85,10 @@ namespace GameTrench
             cooldown = 60 / FireRate;
             
         }
+        public abstract void UpdateUnit();
 
+            
+     
         public void Die()
         {
             if (side) position.X = 10;

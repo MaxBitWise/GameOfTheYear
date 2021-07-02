@@ -107,7 +107,19 @@ namespace GameTrench
 
 
             }
-            if (currentMouseState.Y < 250 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed && CurrMode == MouseMode.Default)
+            if(CurrMode == MouseMode.SetBunker && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed  && currentMouseState.Y > 200)
+            {
+                if (Globals.MoneyBalance > Globals.BunkerCost) { Globals.humanunits.Add(new Bunker(true, currentMouseState.Y)); Globals.MoneyBalance -= Globals.BunkerCost; }
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (CurrMode == MouseMode.SetMG && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed && currentMouseState.Y > 200)
+            {
+                Globals.humanunits.Add(new Machinegun(true, currentMouseState.Y));
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (currentMouseState.Y < 200 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
             {
                 InterfaceState.InterfaceClick(currentMouseState);
             }

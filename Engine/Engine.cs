@@ -82,8 +82,8 @@ namespace GameTrench
 
         public static void updateSoldiers()
         {
-            foreach (Soldier sold in Globals.humanunits) sold.UpdateSoldier();
-            foreach (Soldier sold in Globals.aiunits) sold.UpdateSoldier();
+            foreach (Unit sold in Globals.humanunits) sold.UpdateUnit();
+            foreach (Unit sold in Globals.aiunits) sold.UpdateUnit();
         }
 
         public static void updateBullets()
@@ -108,6 +108,7 @@ namespace GameTrench
         {
             Resolution.Update(Globals._graphics);
             MouseInput.Update(device);
+            moneyUpdate();
             if (Globals.humanunitsCount < 882)
             {
                 spawnHumanunits();
@@ -138,7 +139,16 @@ namespace GameTrench
             }
         }
 
-
+        private static int IncomeCounter = Globals.IncomeTimer;
+        static void moneyUpdate()
+        {
+            if (IncomeCounter == 0)
+            {
+                Globals.MoneyBalance += Globals.IncomeValue;
+                IncomeCounter = Globals.IncomeTimer;
+            }
+            else IncomeCounter--;
+        }
         static void selectionSoldiersHum()
         {
             Tuple<GroupStates, List<Unit>, bool, Vector2> newGroup = new Tuple<GroupStates, List<Unit>, bool, Vector2>();
@@ -265,7 +275,9 @@ namespace GameTrench
         {
             DrawRecOfMouse(device);
             DrawSoldiers();
-            foreach(Bullet bullet in Globals.Bullets)
+            InterfaceState.DrawButtons(device);
+            InterfaceState.DrawText(device);
+            foreach (Bullet bullet in Globals.Bullets)
             {
                 bullet.DrawBullet(device);
             }
@@ -278,12 +290,12 @@ namespace GameTrench
         }
         public static void DrawSoldiers()
         {
-            foreach (Soldier sold in Globals.humanunits)
-                Globals._spriteBatch.Draw(Globals.texture, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)), 
-                    Resolution.ScaledPoint(new Point(8,8))), Color.White);
-            foreach (Soldier sold in Globals.aiunits)
-                Globals._spriteBatch.Draw(Globals.texture, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
-                    Resolution.ScaledPoint(new Point(8, 8))), Color.White);
+            foreach (Unit sold in Globals.humanunits)
+                Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)), 
+                    Resolution.ScaledPoint(sold.drawSize)), Color.White);
+            foreach (Unit sold in Globals.aiunits)
+                Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
+                    Resolution.ScaledPoint(sold.drawSize)), Color.White);
         }
 /*
         public static void DrawTextForCreationGroup()
