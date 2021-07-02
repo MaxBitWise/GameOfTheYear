@@ -8,6 +8,7 @@ using System.Threading;
 
 namespace GameTrench
 {
+
     static class Engine
     {
         public static void spawnsoldiers()
@@ -98,26 +99,33 @@ namespace GameTrench
                 spawnAiunits();
             }
 
+            for (int i = 0; i < Globals.groups.Count; i++)
+                updateGroup(i); 
+
             updateSoldiers();
+
             if (Globals.wasSelected)
             {
                 KeyboardInput.checkCreationGroup();
                 if (Globals.creatGroup)
                 {
                     selectionSoldiersHum();
-                    rightGroup();
+                    //rightGroup();
                     //Globals.writeTextForGroup = true;
                     Globals.creatGroup = false;
                     
                 }
-                Globals.wasSelected = false;
+                
             }
         }
 
 
         static void selectionSoldiersHum()
         {
-            List<Soldier> newGroup = new List<Soldier>();
+            Tuple<GroupStates, List<Soldier>, bool> newGroup = new Tuple<GroupStates, List<Soldier>, bool>();
+            newGroup.First = GroupStates.Order;
+            newGroup.Second = new List<Soldier>();
+            newGroup.Third = false;
             for (int i = 0; i < Globals.humanunits.Count; i++)
             {
                 if (Globals.humanunits[i].position.X <= Globals.recOfLastSelection.Z &&
@@ -125,18 +133,18 @@ namespace GameTrench
                     Globals.humanunits[i].position.Y >= Globals.recOfLastSelection.Y &&
                     Globals.humanunits[i].position.Y <= Globals.recOfLastSelection.W)
                 {
-                    newGroup.Add(Globals.humanunits[i]);
+                    newGroup.Second.Add(Globals.humanunits[i]);
                 }
             }
             Globals.groups.Add(newGroup);
         }
-        static void rightGroup()
+        static void rightGroup(int numberGroup)
         {
             if (Globals.groups.Count != 0)
             {
                 int heightSelection = (int)(Globals.recOfLastSelection.W - Globals.recOfLastSelection.Y);
                 int weightSelection = (int)(Globals.recOfLastSelection.Z - Globals.recOfLastSelection.X);
-                int soldInLineStep = heightSelection / Globals.groups[Globals.groups.Count - 1].Count;               
+                int soldInLineStep = heightSelection / Globals.groups[numberGroup].Second.Count;               
                 if (soldInLineStep < 8)
                 {
                     soldInLineStep = 8;
@@ -144,13 +152,13 @@ namespace GameTrench
                 int xInGroup = 130 - (soldInLineStep);
                 int yInGroup = (int)Globals.recOfLastSelection.Y + (soldInLineStep / 2);
                 int numberOfSoldier = 0;
-                int soldiersLeft = Globals.groups[Globals.groups.Count - 1].Count;
-                while (numberOfSoldier < Globals.groups[Globals.groups.Count-1].Count)
+                int soldiersLeft = Globals.groups[numberGroup].Second.Count;
+                while (numberOfSoldier < Globals.groups[numberGroup].Second.Count)
                 {
                     if (yInGroup < Globals.recOfLastSelection.W)
                     {
-                        Globals.groups[Globals.groups.Count - 1][numberOfSoldier].destination.X = xInGroup;
-                        Globals.groups[Globals.groups.Count - 1][numberOfSoldier].destination.Y = yInGroup;
+                        Globals.groups[numberGroup].Second[numberOfSoldier].destination.X = xInGroup;
+                        Globals.groups[numberGroup].Second[numberOfSoldier].destination.Y = yInGroup;
                         soldiersLeft--;
                         yInGroup += soldInLineStep;
                     }else if (yInGroup >= Globals.recOfLastSelection.W)
@@ -161,25 +169,73 @@ namespace GameTrench
                         }
                         yInGroup = (int)Globals.recOfLastSelection.Y + soldInLineStep/2;
                         xInGroup -= 8;
-                        Globals.groups[Globals.groups.Count - 1][numberOfSoldier].destination.X = xInGroup;
-                        Globals.groups[Globals.groups.Count - 1][numberOfSoldier].destination.Y = yInGroup;
+                        Globals.groups[numberGroup].Second[numberOfSoldier].destination.X = xInGroup;
+                        Globals.groups[numberGroup].Second[numberOfSoldier].destination.Y = yInGroup;
                         soldiersLeft--;
                     }
                     numberOfSoldier++;
                 }
             }
+            Globals.groups[numberGroup].Third = true;
         }
-
-        static void moveCreatedGroup()
+        
+        static void moveAttackGroup(int numberGroup)
         {
             int numberOfSoldier = 0;
-            while (numberOfSoldier < Globals.groups[Globals.groups.Count - 1].Count)
+            while (numberOfSoldier < Globals.groups[numberGroup].Second.Count)
             {
-                Globals.groups[Globals.groups.Count - 1][numberOfSoldier].destination.X += 640;
+                Globals.groups[numberGroup].Second[numberOfSoldier].destination.X += 640;
                 numberOfSoldier++;
             }
+            Globals.groups[numberGroup].Third = true;
         }
+        static void updateGroup(int numberGroup)
+        {
+            if (Globals.groups[numberGroup].First == GroupStates.Order)
+            {
+                if (!Globals.groups[numberGroup].Third)
+                    rightGroup(numberGroup);
+                bool allInPlaces = true;
+                foreach (Soldier sold in Globals.groups[numberGroup].Second) 
+                {
+                    if (sold.position.X != sold.destination.X ||
+                        sold.position.Y != sold.destination.Y)
+                    {
+                        allInPlaces = false;
+                        break;
+                    }
+                }
+                if (allInPlaces)
+                {
+                    Globals.groups[numberGroup].Third = false;
+                    Globals.groups[numberGroup].First = GroupStates.MoveAttack;
+                }
+            }
+            else if (Globals.groups[numberGroup].First == GroupStates.MoveAttack)
+            {
+                if (!Globals.groups[numberGroup].Third)
+                    moveAttackGroup(numberGroup);
+                bool allInPlaces = true;
+                foreach (Soldier sold in Globals.groups[numberGroup].Second)
+                {
+                    if (sold.position.X != sold.destination.X ||
+                        sold.position.Y != sold.destination.Y)
+                    {
+                        allInPlaces = false;
+                        break;
+                    }
+                }
+                if (allInPlaces)
+                {
+                    Globals.groups[numberGroup].Third = false;
+                    Globals.groups[numberGroup].First = GroupStates.Stand;
+                }
+            }
+            else if (Globals.groups[numberGroup].First == GroupStates.Stand)
+            {
 
+            }
+        }
 
         public static void Draw(GraphicsDevice device)
         {

@@ -8,6 +8,31 @@ using System.Threading;
 
 namespace GameTrench
 {
+    public enum GroupStates
+    {
+        Order = 0,
+        MoveAttack = 1,
+        Lie = 2,
+        MoveTrench = 3,
+        Stand = 4
+    }
+    public class Tuple<T, U, W>
+    {
+        public Tuple()
+        {
+        }
+
+        public Tuple(T first, U second, W third)
+        {
+            this.First = first;
+            this.Second = second;
+            this.Third = third;
+        }
+
+        public T First { get; set; }
+        public U Second { get; set; }
+        public W Third { get; set; }
+    };
     static class Globals
     {
         public static MouseState lastMouseState;
@@ -18,7 +43,7 @@ namespace GameTrench
         public static List<Vector2> testArray = new List<Vector2>();
         public static List<Vector3> trenchArrHum = new List<Vector3>();
         public static List<Vector3> trenchArrAi = new List<Vector3>();
-        public static List<List<Soldier>> groups = new List<List<Soldier>>();
+        public static List<Tuple<GroupStates, List<Soldier>, bool>> groups = new List<Tuple<GroupStates, List<Soldier>, bool>>();
         public static bool wasSelected = false;
         public static bool creatGroup = false;
         public static bool writeTextForGroup = false;
@@ -56,8 +81,8 @@ namespace GameTrench
         public static  Stopwatch stopWatch = new Stopwatch();
         public static SpriteFont font;
         public static SpriteFont fontBold;
-        public static int Width = 800;
-        public static int Height = 600;
+        public static int Width = 1920;
+        public static int Height = 1080;
         public static GraphicsDeviceManager _graphics;
         public static SpriteBatch _spriteBatch;
 
