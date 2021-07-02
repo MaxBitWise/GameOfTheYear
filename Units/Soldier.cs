@@ -72,16 +72,23 @@ namespace GameTrench
             }
             return result;
         }
-        public override void UpdateUnit()
+        public override void UpdateUnit(List<int> indexes)
         {
             if (cooldown > 0) { cooldown--; }
             else
             {
-                FindFireTarget();
+                if (indexes.Count != 0)
+                    FindFireTarget(indexes);
                 nextPosition = CalculateNextPosition();
                 position.X += nextPosition.X;
                 position.Y += nextPosition.Y;
             }
+        }
+        public override void UpdateUnit()
+        {
+            nextPosition = CalculateNextPosition();
+            position.X += nextPosition.X;
+            position.Y += nextPosition.Y;
         }
     }
 }

@@ -82,8 +82,8 @@ namespace GameTrench
 
         public static void updateSoldiers()
         {
-            foreach (Unit sold in Globals.humanunits) sold.UpdateUnit();
-            foreach (Unit sold in Globals.aiunits) sold.UpdateUnit();
+            UpdateGroupInTrenchHum();
+            UpdateGroupInTrenchAI();
         }
 
         public static void updateBullets()
@@ -119,7 +119,7 @@ namespace GameTrench
             }
 
             for (int i = 0; i < Globals.groups.Count; i++)
-                updateGroup(i); 
+                updateGroup(i);
 
             updateSoldiers();
             updateBullets();
@@ -130,8 +130,6 @@ namespace GameTrench
                 if (Globals.creatGroup)
                 {
                     selectionSoldiersHum();
-                    //rightGroup();
-                    //Globals.writeTextForGroup = true;
                     Globals.creatGroup = false;
                     
                 }
@@ -151,11 +149,9 @@ namespace GameTrench
         }
         static void selectionSoldiersHum()
         {
-            Tuple<GroupStates, List<Unit>, bool, Vector2> newGroup = new Tuple<GroupStates, List<Unit>, bool, Vector2>();
-            newGroup.First = GroupStates.Order;
+            Tuple<GroupStates, List<Unit>, bool, Vector3> newGroup = new Tuple<GroupStates, List<Unit>, bool, Vector3>();
             newGroup.Second = new List<Unit>();
-            newGroup.Third = false;
-            newGroup.Fourth = new Vector2(Globals.recOfLastSelection.Z, Globals.recOfLastSelection.Y);
+            var delSoldFromTrench = new List<int>();
 
             for (int i = 0; i < Globals.humanunits.Count; i++)
             {
@@ -165,9 +161,23 @@ namespace GameTrench
                     Globals.humanunits[i].position.Y <= Globals.recOfLastSelection.W)
                 {
                     newGroup.Second.Add(Globals.humanunits[i]);
+                    delSoldFromTrench.Add(i);
                 }
             }
-            Globals.groups.Add(newGroup);
+            if (newGroup.Second.Count != 0)
+            {
+                newGroup.First = GroupStates.Order;
+                newGroup.Third = false;
+                newGroup.Fourth = new Vector3(Globals.recOfLastSelection.Z, Globals.recOfLastSelection.Y, Globals.recOfLastSelection.W);
+                Globals.groups.Add(newGroup);
+            }
+            if (delSoldFromTrench.Count > 0)
+            {
+                for (int i = delSoldFromTrench.Count - 1; i >= 0; i--)
+                {
+                    Globals.humanunits.RemoveAt(delSoldFromTrench[i]);
+                }
+            }    
         }
         static void rightGroup(int numberGroup)
         {
@@ -223,8 +233,8 @@ namespace GameTrench
 
         static void updateGroup(int numberGroup)
         {
-            Globals.groups[numberGroup].Fourth = new Vector2(Globals.groups[numberGroup].Second[0].position.X, 
-                Globals.groups[numberGroup].Fourth.Y);
+            Globals.groups[numberGroup].Fourth = new Vector3(Globals.groups[numberGroup].Second[0].position.X, 
+                Globals.groups[numberGroup].Fourth.Y, Globals.groups[numberGroup].Fourth.Z);
             if (Globals.groups[numberGroup].First == GroupStates.Order)
             {
                 if (!Globals.groups[numberGroup].Third)
@@ -244,6 +254,8 @@ namespace GameTrench
                     Globals.groups[numberGroup].Third = false;
                     Globals.groups[numberGroup].First = GroupStates.MoveAttack;
                 }
+                foreach (Unit sold in Globals.groups[numberGroup].Second)
+                    sold.UpdateUnit();
             }
             else if (Globals.groups[numberGroup].First == GroupStates.MoveAttack)
             {
@@ -264,6 +276,35 @@ namespace GameTrench
                     Globals.groups[numberGroup].Third = false;
                     Globals.groups[numberGroup].First = GroupStates.Stand;
                 }
+
+                var RealIndex = new List<int>();
+
+                for (int i = 0; i < Globals.groupsAI.Count; i++)
+                {
+                    float dXUp = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
+                    float dYUp = Globals.groups[numberGroup].Fourth.Y - Globals.groupsAI[i].Fourth.Y;
+
+                    float hypotenuseUp = (float)Math.Sqrt(dXUp * dXUp + dYUp * dYUp);
+                    if (hypotenuseUp < Globals.SoldierRange)
+                    {
+                        RealIndex.Add(i);
+                    }
+                    float dXDown = Globals.groups[numberGroup].Fourth.X - Globals.groupsAI[i].Fourth.X;
+                    float dYDown = Globals.groups[numberGroup].Fourth.Z - Globals.groupsAI[i].Fourth.Y;
+
+                    float hypotenuseDown = (float)Math.Sqrt(dXDown * dXDown + dYDown * dYDown);
+                    if (hypotenuseDown < Globals.SoldierRange)
+                    {
+                        RealIndex.Add(i);
+                    }
+                    
+                }
+                if (1790 - Globals.groups[numberGroup].Fourth.X < Globals.SoldierRange)
+                {
+                    RealIndex.Add(-1);
+                }
+                foreach (Unit sold in Globals.groups[numberGroup].Second)
+                    sold.UpdateUnit(RealIndex);
             }
             else if (Globals.groups[numberGroup].First == GroupStates.Stand)
             {
@@ -290,6 +331,13 @@ namespace GameTrench
         }
         public static void DrawSoldiers()
         {
+            for (int i = 0; i < Globals.groups.Count; i++)
+            {
+                foreach (Unit sold in Globals.groups[i].Second)
+                    Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
+                        Resolution.ScaledPoint(sold.drawSize)), Color.White);
+            }
+            
             foreach (Unit sold in Globals.humanunits)
                 Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)), 
                     Resolution.ScaledPoint(sold.drawSize)), Color.White);
@@ -297,24 +345,54 @@ namespace GameTrench
                 Globals._spriteBatch.Draw(sold.UnitTex, new Rectangle(Resolution.ScaledPoint(new Point((int)sold.position.X, (int)sold.position.Y)),
                     Resolution.ScaledPoint(sold.drawSize)), Color.White);
         }
-/*
-        public static void DrawTextForCreationGroup()
+        
+
+        public static void UpdateGroupInTrenchHum()
         {
-            if (Globals.writeTextForGroup && Globals.creatGroup)
+            var RealIndex = new List<int>();
+            for (int i = 0; i < Globals.groupsAI.Count; i++)
             {
-                Globals._spriteBatch.DrawString(Globals.fontBold, new String("ГРУППА БЫЛА СОЗДАНА"), new Vector2(940, 1000), Color.Green);
-                Globals.wasSelected = false;
-                Globals.writeTextForGroup = false;
-                Globals.creatGroup = false;
-            }   
-            else if (Globals.writeTextForGroup && !Globals.creatGroup)
+                if (Globals.groupsAI[i].Fourth.X - 130 < Globals.SoldierRange)
+                {
+                    RealIndex.Add(i);
+                }
+            }
+            foreach (Unit sold in Globals.humanunits) sold.UpdateUnit(RealIndex);
+        }
+
+        public static void UpdateGroupInFieldHum()
+        {
+            for (int i = 0; i < Globals.groups.Count; i++)
             {
-                Globals._spriteBatch.DrawString(Globals.fontBold, new String("ГРУППА НЕ БЫЛА СОЗДАНА"), new Vector2(940, 1000), Color.Red);
-                Globals.wasSelected = false;
-                Globals.creatGroup = false;
-                Globals.writeTextForGroup = false;
+                foreach (Unit sold in Globals.groups[i].Second)
+                {
+                    sold.UpdateUnit();
+                }
             }
         }
-*/
+
+        public static void UpdateGroupInTrenchAI()
+        {
+            var RealIndex = new List<int>();
+            for (int i = 0; i < Globals.groupsAI.Count; i++)
+            {
+                if (Globals.groupsAI[i].Fourth.X - 130 < Globals.SoldierRange)
+                {
+                    RealIndex.Add(i);
+                }
+            }
+            foreach (Unit sold in Globals.aiunits) sold.UpdateUnit(RealIndex);
+        }
+
+        public static void UpdateGroupInFieldAI()
+        {
+            for (int i = 0; i < Globals.groups.Count; i++)
+            {
+                foreach (Unit sold in Globals.groups[i].Second)
+                {
+                    sold.UpdateUnit();
+                }
+            }
+        }
     }
 }

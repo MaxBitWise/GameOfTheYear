@@ -27,9 +27,54 @@ namespace GameTrench
             
         }
 
-        public void FindFireTarget()
+        public void FindFireTarget(List<int> indexes)
         {
-            if(side)
+            if (side)
+            {
+                if (indexes[indexes.Count - 1] != -1)
+                {
+
+                    Random rand = new Random();
+                    int targetIndex = rand.Next((int)(indexes.Count));
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int targetIndexInGroup = rand.Next((int)(Globals.groupsAI[targetIndex].Second.Count - 1));
+                        float dX = position.X - Globals.groupsAI[targetIndex].Second[targetIndexInGroup].position.X;
+                        float dY = position.Y - Globals.groupsAI[targetIndex].Second[targetIndexInGroup].position.Y;
+
+                        float hypotenuse = (float)Math.Sqrt(dX * dX + dY * dY);
+                        if (hypotenuse < FireRange)
+                        {
+                            FireToGroup(targetIndex, targetIndexInGroup);
+                        }
+                    }
+                }
+                else
+                {
+                    Random rand = new Random();
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int target = rand.Next((int)(Globals.aiunits.Count - 1));
+                        float dX = position.X - Globals.aiunits[target].position.X;
+                        float dY = position.Y - Globals.aiunits[target].position.Y;
+
+                        float hypotenuse = (float)Math.Sqrt(dX * dX + dY * dY);
+                        if (hypotenuse < FireRange)
+                        {
+                            Fire(target);
+                        }
+                    }
+                }
+
+            }
+
+
+
+
+
+
+
+            /*if(side)
             {
                 //var PossibleTargets = new List<Unit>();
                 var RealIndex = new List<int>();
@@ -74,7 +119,7 @@ namespace GameTrench
                     int targetIndexInRange = rand.Next((int)(RealIndex.Count));
                     Fire(RealIndex[targetIndexInRange]);
                 }
-            }
+            }*/
 
         }
 
@@ -85,6 +130,22 @@ namespace GameTrench
             cooldown = 60 / FireRate;
             
         }
+        public void FireToGroup(int groupIndex, int EnemyIndex)
+        {
+            if (side) 
+            { 
+                Globals.Bullets.Add(new Bullet(position, Globals.groupsAI[groupIndex].Second[EnemyIndex].position)); 
+                Globals.groupsAI[groupIndex].Second[EnemyIndex].Die(); 
+            }
+            if (!side) 
+            {
+                Globals.Bullets.Add(new Bullet(position, Globals.groups[groupIndex].Second[EnemyIndex].position));
+                Globals.groups[groupIndex].Second[EnemyIndex].Die();
+            }
+            cooldown = 60 / FireRate;
+
+        }
+        public abstract void UpdateUnit(List<int> indexes);
         public abstract void UpdateUnit();
 
             

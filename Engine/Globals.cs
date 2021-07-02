@@ -46,7 +46,8 @@ namespace GameTrench
         public static List<Vector2> testArray = new List<Vector2>();
         public static List<Vector3> trenchArrHum = new List<Vector3>();
         public static List<Vector3> trenchArrAi = new List<Vector3>();
-        public static List<Tuple<GroupStates, List<Unit>, bool, Vector2>> groups = new List<Tuple<GroupStates, List<Unit>, bool, Vector2>>();
+        public static List<Tuple<GroupStates, List<Unit>, bool, Vector3>> groups = new List<Tuple<GroupStates, List<Unit>, bool, Vector3>>();
+        public static List<Tuple<GroupStates, List<Unit>, bool, Vector3>> groupsAI = new List<Tuple<GroupStates, List<Unit>, bool, Vector3>>();
         public static bool wasSelected = false;
         public static bool creatGroup = false;
         public static bool writeTextForGroup = false;
