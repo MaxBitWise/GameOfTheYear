@@ -258,15 +258,12 @@ namespace GameTrench
         public static void DrawText(GraphicsDevice device)
         {
          
-            var buttonBack = new Texture2D(device, 1, 1);
-            Color buttonBackColor = new Color(0, 128, 255, 20); // default color gray
-            buttonBack.SetData(new[] { buttonBackColor });
-            Globals._spriteBatch.DrawString(Globals.font, new String("Balance OS: \n" + Globals.MoneyBalance.ToString()), new Vector2(450, 20), Color.Black);
+            Globals._spriteBatch.DrawString(Globals.gothic, new String("SP Balance: \n   " + Globals.MoneyBalance.ToString()), 
+                Resolution.ScaledVector2(new Vector2(400, 20)), Color.Black, 0f, new Vector2(0,0),  Resolution.ScreenScale, SpriteEffects.None, 1);
 
-            foreach (Button button in ButtonsArr)
-            {
-                Globals._spriteBatch.Draw(button.CurrTex, new Rectangle(Resolution.ScaledPoint(button.Position), Resolution.ScaledPoint(button.Shape)), Color.White);
-            }
+            Globals._spriteBatch.DrawString(Globals.gothic, new String("EXP Balance: \n   " + Globals.ExpBalance.ToString()),
+                Resolution.ScaledVector2(new Vector2(1400, 20)), Color.Black, 0f, new Vector2(0, 0), Resolution.ScreenScale, SpriteEffects.None, 1);
+
         }
 
 

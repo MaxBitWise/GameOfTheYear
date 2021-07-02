@@ -109,16 +109,77 @@ namespace GameTrench
             }
             if(CurrMode == MouseMode.SetBunker && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed  && currentMouseState.Y > 200)
             {
-                if (Globals.MoneyBalance > Globals.BunkerCost) { Globals.humanunits.Add(new Bunker(true, currentMouseState.Y)); Globals.MoneyBalance -= Globals.BunkerCost; }
+                if (Globals.MoneyBalance > Globals.BunkerCost)
+                {
+                    Globals.humanunits.Add(new Bunker(true, currentMouseState.Y));
+                    Globals.MoneyBalance -= Globals.BunkerCost;
+                }
                 CurrMode = MouseMode.Default;
                 InterfaceState.Deselect();
             }
             if (CurrMode == MouseMode.SetMG && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed && currentMouseState.Y > 200)
             {
-                Globals.humanunits.Add(new Machinegun(true, currentMouseState.Y));
+                if (Globals.MoneyBalance > Globals.MGCost)
+                {
+                    Globals.humanunits.Add(new Machinegun(true, currentMouseState.Y));
+                    Globals.MoneyBalance -= Globals.MGCost;
+                }    
                 CurrMode = MouseMode.Default;
                 InterfaceState.Deselect();
             }
+            if (CurrMode == MouseMode.SetArtillery && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed && currentMouseState.Y > 200)
+            {
+                if (Globals.MoneyBalance >= Globals.StrikeCost)
+                {
+                    Globals.Strikes.Add(new ArtilleryStrike(new Vector2(currentMouseState.X, currentMouseState.Y)));
+                    Globals.MoneyBalance -= Globals.MGCost;
+                }
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (CurrMode == MouseMode.BunkerUp && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            {
+                if (Globals.ExpBalance >= Globals.BunkerUpCost)
+                {
+                    Globals.BunkerUpCost += 2;
+                    Globals.BunkerHP += 500;
+                    Globals.BunkerDmg += 50;
+                    Globals.BunkerAccuracy += 5;
+                    Globals.BunkerFireRate += 1;
+                    Globals.ExpBalance -= Globals.BunkerUpCost;
+                }
+
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (CurrMode == MouseMode.MGUp && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            {
+                if (Globals.ExpBalance >= Globals.MGUpCost)
+                {
+                    Globals.MGUpCost += 2;
+                    Globals.MGHP += 100;
+                    Globals.MGAccuracy += 1;
+                    Globals.MGFireRate += 3;
+                    Globals.ExpBalance -= Globals.MGUpCost;
+                }
+
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+            if (CurrMode == MouseMode.ArtilleryStrikeUp && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
+            {
+                if (Globals.ExpBalance >= Globals.StrikeUpCost)
+                {
+                    Globals.StrikeUpCost += 2;
+                    Globals.StrikesSize += 3;
+                    Globals.StrikesCount += 1;
+                    Globals.ExpBalance -= Globals.StrikeUpCost;
+                }
+
+                CurrMode = MouseMode.Default;
+                InterfaceState.Deselect();
+            }
+
             if (currentMouseState.Y < 200 && currentMouseState.LeftPressed && !Globals.lastMouseState.LeftPressed)
             {
                 InterfaceState.InterfaceClick(currentMouseState);

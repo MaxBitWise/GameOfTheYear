@@ -15,7 +15,7 @@ namespace GameTrench
             else position = new Vector2(1870, Y);
             side = sidein;
             hp = Globals.BunkerHP;
-            UnitTex = Globals.BunkerIconTex;
+            UnitTex = Globals.BunkerFieldTex;
             FireRate = Globals.BunkerFireRate;
             FireDmg = Globals.BunkerDmg;
             FireRange = Globals.BunkerRange;

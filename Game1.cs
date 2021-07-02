@@ -44,6 +44,7 @@ namespace GameTrench
             Globals.bigtex = Content.Load<Texture2D>("soldierBIG");
             Globals.trenchtexleft = Content.Load<Texture2D>("trench");
             Globals.font = Content.Load<SpriteFont>("font");
+            Globals.gothic = Content.Load<SpriteFont>("gothic");
             Globals.fontBold = Content.Load<SpriteFont>("fontBold");
             Globals.Select25Tex = Content.Load<Texture2D>("Select25Tex");
             Globals.Select25SelectedTex = Content.Load<Texture2D>("Select25SelectedTex");
@@ -66,6 +67,9 @@ namespace GameTrench
             Globals.TrenchUpIconTex = Content.Load<Texture2D>("TrenchUpIcon");
             Globals.TrenchUpIconSelectedTex = Content.Load<Texture2D>("TrenchUpIconSelected");
             Globals.BulletTex = Content.Load<Texture2D>("Bullet");
+            Globals.MGFieldTex = Content.Load<Texture2D>("MGFieldTex");
+            Globals.BunkerFieldTex = Content.Load<Texture2D>("BunkerFieldTex");
+            Globals.BlastTex = Content.Load<Texture2D>("blast");
             InterfaceState.InitButtons();
         }
 
@@ -83,7 +87,7 @@ namespace GameTrench
 
         void drawBackground()
         {
-            GraphicsDevice.Clear(Color.Bisque);
+            GraphicsDevice.Clear(new Color(52,40,23));
             Globals._spriteBatch.Draw(Globals.trenchtexleft, new Rectangle((int)(50 * Resolution.DetermineDrawScaling().X), (int)(0 * Resolution.DetermineDrawScaling().Y),
                 (int)(80 * Resolution.DetermineDrawScaling().X), (int)(1080 * Resolution.DetermineDrawScaling().Y)), null, Color.White, (float)Math.PI,
                 new Vector2(Globals.trenchtexleft.Width, Globals.trenchtexleft.Height), SpriteEffects.FlipHorizontally, 0F);

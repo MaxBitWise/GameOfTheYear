@@ -40,6 +40,7 @@ namespace GameTrench
         public static MouseAdapted lastMouseState;
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<Unit> humanunits = new List<Unit>();
+        public static List<ArtilleryStrike> Strikes = new List<ArtilleryStrike>();
         public static int humanunitsCount = 0;
         public static List<Unit> aiunits = new List<Unit>();
         public static int aiunitsCount = 0;
@@ -101,17 +102,29 @@ namespace GameTrench
         public static int BunkerFireRate = 2;
         public static int BunkerCost = 200;
 
+        public static int StrikesCount = 10;
+        public static int StrikesSize = 20;
+        public static int StrikeCost = 100;
+
         #endregion
 
         #region Mics Textures
         public static Texture2D BulletTex;
-
+        public static Texture2D MGFieldTex;
+        public static Texture2D BunkerFieldTex;
+        public static Texture2D BlastTex;
         #endregion
 
         #region GameDesignValues
-        public static int MoneyBalance = 100;
+        public static int MoneyBalance = 50000;
         public static int IncomeTimer = 600; //In frames
         public static int IncomeValue = 10;
+
+        public static int ExpBalance = 1000;
+        public static int BunkerUpCost = 1;
+        public static int MGUpCost = 1;
+        public static int TrenchUpCost = 1;
+        public static int StrikeUpCost = 1;
         #endregion
 
         public static double timer = 0;
@@ -121,6 +134,7 @@ namespace GameTrench
         public static  Stopwatch stopWatch = new Stopwatch();
         public static SpriteFont font;
         public static SpriteFont fontBold;
+        public static SpriteFont gothic;
         public static int Width = 1920;
         public static int Height = 1080;
         public static GraphicsDeviceManager _graphics;
