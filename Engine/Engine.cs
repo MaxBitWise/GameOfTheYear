@@ -321,9 +321,11 @@ namespace GameTrench
         public static void Draw(GraphicsDevice device)
         {
             DrawRecOfMouse(device);
+            DrawCorpses(device);
             DrawSoldiers();
             InterfaceState.DrawButtons(device);
             InterfaceState.DrawText(device);
+            
             foreach (Bullet bullet in Globals.Bullets)
             {
                 bullet.DrawBullet(device);
@@ -334,7 +336,13 @@ namespace GameTrench
             }
 
         }
-
+        public static void DrawCorpses(GraphicsDevice device)
+        {
+            for (int i = 0; i < Globals.corpses.Count; i++)
+            {
+                Globals._spriteBatch.Draw(Globals.CorpseTex, Globals.corpses[i], Color.White);
+            }
+        }
         public static void DrawRecOfMouse(GraphicsDevice device)
         {
             MouseInput.Draw(device);

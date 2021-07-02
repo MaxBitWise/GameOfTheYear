@@ -22,6 +22,8 @@ namespace GameTrench
         public int FireDmg;
         public int FireRange;
         public int FireAccuracy;
+        public int SelfInvul = 0;
+        Random rand = new Random();
         public Unit()
         {
             
@@ -125,22 +127,70 @@ namespace GameTrench
 
         public void Fire(int EnemyIndex)
         {
-            if (side) { Globals.Bullets.Add(new Bullet(position, Globals.aiunits[EnemyIndex].position)); Globals.aiunits[EnemyIndex].Die();  }
-            if (!side) { Globals.Bullets.Add(new Bullet(position, Globals.humanunits[EnemyIndex].position)); Globals.humanunits[EnemyIndex].Die(); }
+            if (side) 
+            { 
+                
+                int chance = FireAccuracy - Globals.aiunits[EnemyIndex].SelfInvul;
+                if (rand.Next(100) < chance)
+                {
+                    Globals.aiunits[EnemyIndex].Die();
+                    Globals.Bullets.Add(new Bullet(position, Globals.aiunits[EnemyIndex].position, true));
+                }
+                else
+                {
+                    Globals.Bullets.Add(new Bullet(position, Globals.aiunits[EnemyIndex].position, false));
+                }
+                
+            }
+            if (!side)
+            {
+                int chance = FireAccuracy - Globals.humanunits[EnemyIndex].SelfInvul;
+                if (rand.Next(100) < chance)
+                {
+                    Globals.humanunits[EnemyIndex].Die();
+                    Globals.Bullets.Add(new Bullet(position, Globals.humanunits[EnemyIndex].position, true));
+                }
+                else
+                {
+                    Globals.Bullets.Add(new Bullet(position, Globals.humanunits[EnemyIndex].position, false));
+                }
+                
+            }
             cooldown = 60 / FireRate;
             
         }
         public void FireToGroup(int groupIndex, int EnemyIndex)
         {
+            
             if (side) 
             { 
-                Globals.Bullets.Add(new Bullet(position, Globals.groupsAI[groupIndex].Second[EnemyIndex].position)); 
-                Globals.groupsAI[groupIndex].Second[EnemyIndex].Die(); 
+               
+                int chance = FireAccuracy;
+                if(rand.Next(100) < chance)
+                {
+                    Globals.groupsAI[groupIndex].Second[EnemyIndex].Die();
+                    Globals.Bullets.Add(new Bullet(position, Globals.groupsAI[groupIndex].Second[EnemyIndex].position, true));
+                }
+                else
+                {
+                    Globals.Bullets.Add(new Bullet(position, Globals.groupsAI[groupIndex].Second[EnemyIndex].position, false));
+                }
+
+                //Globals.groupsAI[groupIndex].Second[EnemyIndex].Die(); 
             }
             if (!side) 
             {
-                Globals.Bullets.Add(new Bullet(position, Globals.groups[groupIndex].Second[EnemyIndex].position));
-                Globals.groups[groupIndex].Second[EnemyIndex].Die();
+                int chance = FireAccuracy;
+                if (rand.Next(100) < chance)
+                {
+                    Globals.groups[groupIndex].Second[EnemyIndex].Die();
+                    Globals.Bullets.Add(new Bullet(position, Globals.groups[groupIndex].Second[EnemyIndex].position, true));
+                }
+                else
+                {
+                    Globals.Bullets.Add(new Bullet(position, Globals.groups[groupIndex].Second[EnemyIndex].position, false));
+                }
+
             }
             cooldown = 60 / FireRate;
 
@@ -152,6 +202,7 @@ namespace GameTrench
      
         public void Die()
         {
+            Globals.corpses.Add(position);
             if (side) position.X = 10;
             else position.X = 1910;
             position.Y = 500;

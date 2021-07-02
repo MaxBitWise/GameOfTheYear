@@ -70,6 +70,7 @@ namespace GameTrench
             Globals.MGFieldTex = Content.Load<Texture2D>("MGFieldTex");
             Globals.BunkerFieldTex = Content.Load<Texture2D>("BunkerFieldTex");
             Globals.BlastTex = Content.Load<Texture2D>("blast");
+            Globals.CorpseTex = Content.Load<Texture2D>("corpse");
             InterfaceState.InitButtons();
         }
 

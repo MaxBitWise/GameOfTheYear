@@ -40,6 +40,7 @@ namespace GameTrench
         public static MouseAdapted lastMouseState;
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<Unit> humanunits = new List<Unit>();
+        public static List<Vector2> corpses = new List<Vector2>();
         public static List<ArtilleryStrike> Strikes = new List<ArtilleryStrike>();
         public static int humanunitsCount = 0;
         public static List<Unit> aiunits = new List<Unit>();
@@ -82,7 +83,7 @@ namespace GameTrench
 
         #region UnitsStats
         public static int SoldierHP = 100;
-        public static int SoldierAccuracy = 50;
+        public static int SoldierAccuracy = 60;
         public static int SoldierDmg = 50;
         public static int SoldierRange = 200;
         public static int SoldierFireRate = 1;
@@ -106,6 +107,10 @@ namespace GameTrench
         public static int StrikesSize = 20;
         public static int StrikeCost = 100;
 
+        public static int TrenchArmor = 10;
+        public static int TrenchInvul = 20;
+
+
         #endregion
 
         #region Mics Textures
@@ -113,6 +118,7 @@ namespace GameTrench
         public static Texture2D MGFieldTex;
         public static Texture2D BunkerFieldTex;
         public static Texture2D BlastTex;
+        public static Texture2D CorpseTex;
         #endregion
 
         #region GameDesignValues
@@ -125,6 +131,9 @@ namespace GameTrench
         public static int MGUpCost = 1;
         public static int TrenchUpCost = 1;
         public static int StrikeUpCost = 1;
+
+        public static int AItrenchInvul = 20;
+        public static int AItrenchArmor = 5;
         #endregion
 
         public static double timer = 0;

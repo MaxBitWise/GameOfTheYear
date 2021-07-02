@@ -10,7 +10,7 @@ namespace GameTrench
     public class Soldier : Unit
     {
         private Vector2 nextPosition;
-        public int speed = 20;
+        public int speed = 2;
         public Soldier(bool sidein) 
         {
             Random rand = new Random();
@@ -28,6 +28,7 @@ namespace GameTrench
             FireRange = Globals.SoldierRange;
             FireAccuracy = Globals.SoldierAccuracy;
             UnitTex = Globals.texture;
+            SelfInvul = Globals.TrenchInvul;
             drawSize = new Point(8, 8);
     }
         public Soldier(bool sidein, Vector2 dest)
@@ -74,6 +75,9 @@ namespace GameTrench
         }
         public override void UpdateUnit(List<int> indexes)
         {
+            if ((position.X >= 50 && position.X <= 130)) SelfInvul = Globals.TrenchInvul;
+            
+            if ((position.X >= 1790 && position.X <= 1870)) SelfInvul = Globals.AItrenchInvul;
             if (cooldown > 0) { cooldown--; }
             else
             {
