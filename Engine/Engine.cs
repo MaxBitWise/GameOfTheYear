@@ -86,6 +86,15 @@ namespace GameTrench
             foreach (Soldier sold in Globals.aiunits) sold.UpdateSoldier();
         }
 
+        public static void updateBullets()
+        {
+            foreach (Bullet bullet in Globals.Bullets)
+            {
+                bullet.UpdateBullet();
+                if (bullet.dead) { }
+            }
+        }
+
         public static void UpdateEngine(GraphicsDevice device)
         {
             Resolution.Update(Globals._graphics);

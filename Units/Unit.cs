@@ -80,11 +80,13 @@ namespace GameTrench
         {
             if(side) Globals.aiunits[EnemyIndex].Die();
             if(!side) Globals.humanunits[EnemyIndex].Die();
+            cooldown = 60 / FireRate;
         }
 
         public void Die()
         {
-            position.X = 500;
+            if (side) position.X = 10;
+            else position.X = 1910;
             position.Y = 500;
         }
 

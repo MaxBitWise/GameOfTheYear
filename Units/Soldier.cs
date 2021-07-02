@@ -19,7 +19,7 @@ namespace GameTrench
                 position.X = 1900;
 
             hp = Globals.SoldierHP;
-            cooldown = 60 / Globals.SoldierFireRate;
+            cooldown = 0;
             FireRate = Globals.SoldierFireRate;
             FireDmg = Globals.SoldierDmg;
             FireRange = Globals.SoldierRange;
@@ -37,7 +37,7 @@ namespace GameTrench
             else
                 position.X = 1900;
             hp = Globals.SoldierHP;
-            cooldown = 60 / Globals.SoldierFireRate;
+            cooldown = 0;
             FireRate = Globals.SoldierFireRate;
             FireDmg = Globals.SoldierDmg;
             FireRange = Globals.SoldierRange;
@@ -67,10 +67,14 @@ namespace GameTrench
         }
         public void UpdateSoldier()
         {
-            FindFireTarget();
-            nextPosition = CalculateNextPosition();
-            position.X += nextPosition.X;
-            position.Y += nextPosition.Y;
+            if (cooldown > 0) { cooldown--; }
+            else
+            {
+                FindFireTarget();
+                nextPosition = CalculateNextPosition();
+                position.X += nextPosition.X;
+                position.Y += nextPosition.Y;
+            }
         }
     }
 }
